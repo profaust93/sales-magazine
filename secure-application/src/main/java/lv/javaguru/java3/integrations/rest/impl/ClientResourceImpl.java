@@ -31,6 +31,17 @@ public class ClientResourceImpl implements ClientResource {
     @Produces(APPLICATION_JSON)
     @Path("/clients")
     public ClientDTO create(ClientDTO clientDTO) {
+        if(clientDTO == null){
+            System.err.println("Cliend DTO is NULL");
+        } else {
+            if(clientDTO.getLogin() == null){
+                System.err.println("Cliend login IS NULL");
+            }
+             if( clientDTO.getPassword() == null){
+                 System.err.println("Pwd is null");
+             }
+        }
+
         CreateClientCommand command = new CreateClientCommand(
                 clientDTO.getLogin(), clientDTO.getPassword()
         );

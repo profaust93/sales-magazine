@@ -11,6 +11,7 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/secure-application" />
+            <option value="$PROJECT_DIR$/secure-shared-api" />
           </set>
         </option>
         <option name="useAutoImport" value="true" />

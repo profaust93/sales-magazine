@@ -1,3 +1,4 @@
 rootProject.name = 'sales-magazine'
 include 'secure-application'
+include 'secure-shared-api'
 

@@ -23,6 +23,8 @@
       <module name="sales-magazine_test" target="1.8" />
       <module name="secure-application_main" target="1.8" />
       <module name="secure-application_test" target="1.8" />
+      <module name="secure-shared-api_main" target="1.8" />
+      <module name="secure-shared-api_test" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>

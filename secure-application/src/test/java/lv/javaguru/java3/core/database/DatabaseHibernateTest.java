@@ -1,4 +1,4 @@
-package lv.javaguru.java3.core.database.clients;
+package lv.javaguru.java3.core.database;
 
 import lv.javaguru.java3.config.Application;
 import lv.javaguru.java3.core.database.ClientDAO;
@@ -15,10 +15,10 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 //@IntegrationTest("server.port:0")
 public abstract class DatabaseHibernateTest {
 
-	@Autowired
-	protected SessionFactory sessionFactory;
+    @Autowired
+    protected SessionFactory sessionFactory;
 
-	@Autowired
-	protected ClientDAO clientDAO;
+    @Autowired
+    protected ClientDAO clientDAO;
 
 }

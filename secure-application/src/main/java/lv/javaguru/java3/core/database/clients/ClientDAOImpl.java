@@ -1,5 +1,6 @@
 package lv.javaguru.java3.core.database.clients;
 
+import lv.javaguru.java3.core.database.CRUDOperationDAOImpl;
 import lv.javaguru.java3.core.database.ClientDAO;
 import lv.javaguru.java3.core.domain.Client;
 import org.springframework.stereotype.Component;

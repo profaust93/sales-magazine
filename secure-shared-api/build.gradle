@@ -1,0 +1,14 @@
+dependencies {
+    compile libraries.bootLib
+    compile libraries.aopLib
+    compile libraries.ioLib
+    compile libraries.persistenceLib
+    compile libraries.utilLib
+    compile libraries.jerseyLib
+    testCompile libraries.testLib
+
+}
+
+jar {
+    baseName = 'secure-shared-api'
+}

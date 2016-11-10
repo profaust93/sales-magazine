@@ -1,6 +1,5 @@
-package lv.javaguru.java3.core.database.clients;
+package lv.javaguru.java3.core.database;
 
-import lv.javaguru.java3.core.database.CRUDOperationDAO;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,7 +8,7 @@ import java.io.Serializable;
 import java.lang.reflect.ParameterizedType;
 import java.util.List;
 
-abstract class CRUDOperationDAOImpl<E, K extends Serializable> implements CRUDOperationDAO<E, K> {
+public abstract class CRUDOperationDAOImpl<E, K extends Serializable> implements CRUDOperationDAO<E, K> {
 
     @Autowired
     private SessionFactory sessionFactory;

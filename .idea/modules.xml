@@ -8,6 +8,9 @@
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/secure-application/secure-application.iml" filepath="$PROJECT_DIR$/.idea/modules/secure-application/secure-application.iml" group="secure-application" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/secure-application/secure-application_main.iml" filepath="$PROJECT_DIR$/.idea/modules/secure-application/secure-application_main.iml" group="secure-application" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/secure-application/secure-application_test.iml" filepath="$PROJECT_DIR$/.idea/modules/secure-application/secure-application_test.iml" group="secure-application" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/secure-shared-api/secure-shared-api.iml" filepath="$PROJECT_DIR$/.idea/modules/secure-shared-api/secure-shared-api.iml" group="secure-shared-api" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/secure-shared-api/secure-shared-api_main.iml" filepath="$PROJECT_DIR$/.idea/modules/secure-shared-api/secure-shared-api_main.iml" group="secure-shared-api" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/secure-shared-api/secure-shared-api_test.iml" filepath="$PROJECT_DIR$/.idea/modules/secure-shared-api/secure-shared-api_test.iml" group="secure-shared-api" />
     </modules>
   </component>
 </project>
