@@ -1,8 +1,8 @@
-package lv.javaguru.java3.core.domain;
+package lv.javaguru.java3.integrations.rest.dto;
 
 import java.time.LocalDateTime;
 
-public class ProducerBuilder {
+public class ProducerDTOBuilder {
 
     private Long id;
     private String name;
@@ -11,15 +11,16 @@ public class ProducerBuilder {
     private LocalDateTime lastUpdate;
     private Long version;
 
-    private ProducerBuilder producerBuilder(){
-        return new ProducerBuilder();
+    private ProducerDTOBuilder producerBuilder(){
+        return new ProducerDTOBuilder();
     }
 
-    public static ProducerBuilder createProducer() {
-        return new ProducerBuilder();
+    public static ProducerDTOBuilder createProducerDTO() {
+        return new ProducerDTOBuilder();
     }
-    public Producer build(){
-        Producer producer = new Producer();
+    
+    public ProducerDTO build(){
+        ProducerDTO producer = new ProducerDTO();
         producer.setId(id);
         producer.setName(name);
         producer.setUrl(producerUrl);
@@ -29,33 +30,33 @@ public class ProducerBuilder {
         return producer;
     }
 
-    public ProducerBuilder withId(Long id) {
+    public ProducerDTOBuilder withId(Long id) {
         this.id = id;
         return this;
     }
 
-    public ProducerBuilder withName(String name) {
+    public ProducerDTOBuilder withName(String name) {
         this.name = name;
         return this;
     }
 
 
-    public ProducerBuilder withUrl(String producerUrl) {
+    public ProducerDTOBuilder withUrl(String producerUrl) {
         this.producerUrl = producerUrl;
         return this;
     }
 
-    public ProducerBuilder withTimeOfRegistration(LocalDateTime timeOfRegistration) {
+    public ProducerDTOBuilder withTimeOfRegistration(LocalDateTime timeOfRegistration) {
         this.timeOfRegistration = timeOfRegistration;
         return this;
     }
 
-    public ProducerBuilder withLastUpdate(LocalDateTime lastUpdate) {
+    public ProducerDTOBuilder withLastUpdate(LocalDateTime lastUpdate) {
         this.lastUpdate = lastUpdate;
         return this;
     }
 
-    public ProducerBuilder withVersion(Long version) {
+    public ProducerDTOBuilder withVersion(Long version) {
         this.version = version;
         return this;
     }

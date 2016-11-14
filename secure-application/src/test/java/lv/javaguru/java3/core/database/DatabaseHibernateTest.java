@@ -21,4 +21,6 @@ public abstract class DatabaseHibernateTest {
     @Autowired
     protected ClientDAO clientDAO;
 
+    @Autowired
+    protected  ProducerDAO producerDAO;
 }

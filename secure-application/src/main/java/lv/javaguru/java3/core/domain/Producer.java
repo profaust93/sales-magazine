@@ -19,7 +19,7 @@ public class Producer {
     @Column(name="name", nullable = false)
     private String name;
 
-    @Column(name="producer_url", nullable = false)
+    @Column(name="producer_url")
     private String url;
 
     @Version
