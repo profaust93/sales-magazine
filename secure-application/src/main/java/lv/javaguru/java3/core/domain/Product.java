@@ -1,7 +1,11 @@
 package lv.javaguru.java3.core.domain;
 
+import org.hibernate.annotations.Type;
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
 import java.util.Date;
 
 @Entity
@@ -20,8 +24,10 @@ public class Product {
     @Column(name="price", nullable = false)
     private BigDecimal price;
 
+    @Type(type = "lv.javaguru.java3.core.utils.CustomLocalDateTime")
+    @DateTimeFormat(pattern="dd.MM.yyyy HH:mm:ss")
     @Column(name="last_update", nullable = false)
-    private Date lastUpdate;
+    private LocalDateTime lastUpdate;
 
     @Column(name="product_url", nullable = false)
     private String productUrl;
@@ -54,11 +60,11 @@ public class Product {
         this.price = price;
     }
 
-    public Date getLastUpdate() {
+    public LocalDateTime getLastUpdate() {
         return lastUpdate;
     }
 
-    public void setLastUpdate(Date lastUpdate) {
+    public void setLastUpdate(LocalDateTime lastUpdate) {
         this.lastUpdate = lastUpdate;
     }
 
