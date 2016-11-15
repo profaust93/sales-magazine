@@ -8,5 +8,5 @@
 
     <include file="liquibase/changelogs/db.changelog-1.0.xml"/>
     <include file="liquibase/changelogs/patch-2016-11-10.xml"/>
-    <include file="liquibase/changelogs/patch-2016-11-12-producers.xml"/>
+    <include file="liquibase/changelogs/patch-2016-11-12.xml"/>
 </databaseChangeLog>
