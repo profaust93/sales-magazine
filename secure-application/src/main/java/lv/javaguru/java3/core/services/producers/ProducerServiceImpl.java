@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 import java.time.LocalDateTime;
 
 @Component
-class ProducerServiceImpl implements ProducersService {
+class ProducerServiceImpl implements ProducerService {
 
     @Autowired private ProducerDAO producerDAO;
     @Autowired private ProducerValidator producerValidator;

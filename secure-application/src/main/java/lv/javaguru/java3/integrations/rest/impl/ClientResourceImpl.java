@@ -32,10 +32,10 @@ public class ClientResourceImpl implements ClientResource {
     @Path("/clients")
     public ClientDTO create(ClientDTO clientDTO) {
         if(clientDTO == null){
-            System.err.println("Cliend DTO is NULL");
+            System.err.println("Client DTO is NULL");
         } else {
             if(clientDTO.getLogin() == null){
-                System.err.println("Cliend login IS NULL");
+                System.err.println("Client login IS NULL");
             }
              if( clientDTO.getPassword() == null){
                  System.err.println("Pwd is null");
