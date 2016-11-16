@@ -19,7 +19,7 @@ public class ProducerValidatorImplTest {
         validateShouldFail(null, URL, "Producer name must not be null");
     }
 
-  
+
     @Test
     public void validateShouldFailIfNameIsEmpty() {
         validateShouldFail("", URL, "Producer name must not be empty");
