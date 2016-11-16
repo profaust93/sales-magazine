@@ -4,4 +4,5 @@
 #IDEA ignore personal project settings
 .idea/
 *.iml
-/.idea/
+/.idea/*
+.idea/modules/secure-shared-api
