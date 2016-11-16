@@ -1,6 +1,7 @@
 package lv.javaguru.java3.core.domain;
 
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
 import java.util.Date;
 
 public class ProductBuilder {
@@ -8,11 +9,15 @@ public class ProductBuilder {
     private Long id;
     private String name;
     private BigDecimal price;
-    private Date lastUpdate;
+    private LocalDateTime lastUpdate;
     private String productUrl;
     private Long version;
 
-    private ProductBuilder productBuilder(){
+    private ProductBuilder(){
+
+    }
+
+    public static ProductBuilder createProduct(){
         return new ProductBuilder();
     }
 
@@ -42,7 +47,7 @@ public class ProductBuilder {
         return this;
     }
 
-    public ProductBuilder withLastUpdate(Date lastUpdate) {
+    public ProductBuilder withLastUpdate(LocalDateTime lastUpdate) {
         this.lastUpdate = lastUpdate;
         return this;
     }
