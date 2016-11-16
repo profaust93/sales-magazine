@@ -12,13 +12,24 @@ public interface ProducerResource {
     @POST
     @Consumes(APPLICATION_JSON)
     @Produces(APPLICATION_JSON)
-    @Path("/producers")
+    @Path("/producer")
     ProducerDTO create(ProducerDTO producerDTO);
 
     @GET
     @Consumes(APPLICATION_JSON)
     @Produces(APPLICATION_JSON)
-    @Path("/producers/{producerId}")
+    @Path("/producer/{producerId}")
     ProducerDTO get(@PathParam("producerId") Long producerId);
 
+    @POST
+    @Consumes(APPLICATION_JSON)
+    @Produces(APPLICATION_JSON)
+    @Path("/producer/update")
+    ProducerDTO update(ProducerDTO productDTO);
+
+    @POST
+    @Consumes(APPLICATION_JSON)
+    @Produces(APPLICATION_JSON)
+    @Path("/producer/remove/{producerId}")
+    String remove(@PathParam("producerId")Long producerId);
 }

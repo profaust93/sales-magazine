@@ -11,7 +11,7 @@ public class UpdateProducerResult implements DomainCommandResult {
         this.producer = producer;
     }
 
-    public ProducerDTO getProducer() {
+    public ProducerDTO getProducerDTO() {
         return producer;
     }
 

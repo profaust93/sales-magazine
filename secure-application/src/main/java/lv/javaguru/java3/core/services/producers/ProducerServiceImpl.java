@@ -30,4 +30,10 @@ class ProducerServiceImpl implements ProducerService {
         return producerDAO.getRequired(producerId);
     }
 
+    @Override
+    public void remove(Long producerId) {
+        Producer product = producerDAO.getRequired(producerId);
+        producerDAO.delete(product);
+    }
+
 }

@@ -11,4 +11,6 @@ public interface ProducerService {
 
     Producer get(Long producerId);
 
+    void remove(Long productId);
+
 }

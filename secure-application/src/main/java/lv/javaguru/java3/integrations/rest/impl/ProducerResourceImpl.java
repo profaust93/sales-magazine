@@ -1,10 +1,8 @@
 package lv.javaguru.java3.integrations.rest.impl;
 
-import lv.javaguru.java3.core.commands.producers.CreateProducerCommand;
-import lv.javaguru.java3.core.commands.producers.CreateProducerResult;
-import lv.javaguru.java3.core.commands.producers.GetProducerCommand;
-import lv.javaguru.java3.core.commands.producers.GetProducerResult;
+import lv.javaguru.java3.core.commands.producers.*;
 import lv.javaguru.java3.core.services.CommandExecutor;
+import lv.javaguru.java3.core.services.producers.ProducerValidator;
 import lv.javaguru.java3.integrations.rest.api.ProducerResource;
 import lv.javaguru.java3.integrations.rest.api.RESTResource;
 import lv.javaguru.java3.integrations.rest.dto.ProducerDTO;
@@ -26,10 +24,13 @@ public class ProducerResourceImpl implements ProducerResource {
         this.commandExecutor = commandExecutor;
     }
 
+    @Autowired
+    private ProducerValidator producerValidator;
+
     @POST
     @Consumes(APPLICATION_JSON)
     @Produces(APPLICATION_JSON)
-    @Path("/producers")
+    @Path("/producer")
     public ProducerDTO create(ProducerDTO producerDTO) {
         if(producerDTO == null){
             System.err.println("Producer DTO is NULL");
@@ -49,11 +50,38 @@ public class ProducerResourceImpl implements ProducerResource {
     @GET
     @Consumes(APPLICATION_JSON)
     @Produces(APPLICATION_JSON)
-    @Path("/producers/{producerId}")
+    @Path("/producer/{producerId}")
     public ProducerDTO get(@PathParam("producerId") Long producerId) {
         GetProducerCommand command = new GetProducerCommand(producerId);
         GetProducerResult result = commandExecutor.execute(command);
         return result.getProducer();
+    }
+
+    @POST
+    @Consumes(APPLICATION_JSON)
+    @Produces(APPLICATION_JSON)
+    @Path("/producer/update")
+    public ProducerDTO update(ProducerDTO producerDTO) {
+        producerValidator.validate(producerDTO);
+        UpdateProducerCommand command = new UpdateProducerCommand(
+                producerDTO.getId(),
+                producerDTO.getName(),
+                producerDTO.getUrl(),
+                producerDTO.getVersion(),
+                producerDTO.getTimeOfRegistration(),
+                producerDTO.getLastUpdate());
+        UpdateProducerResult result = commandExecutor.execute(command);
+        return result.getProducerDTO();
+    }
+
+    @POST
+    @Consumes(APPLICATION_JSON)
+    @Produces(APPLICATION_JSON)
+    @Path("/producer/remove/{producerId}")
+    public String remove(@PathParam("producerId") Long producerId) {
+        RemoveProducerCommand command = new RemoveProducerCommand(producerId);
+        RemoveProducerResult result = commandExecutor.execute(command);
+        return result.getMessage();
     }
 
 }

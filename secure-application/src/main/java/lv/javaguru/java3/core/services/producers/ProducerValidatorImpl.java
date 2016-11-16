@@ -1,5 +1,6 @@
 package lv.javaguru.java3.core.services.producers;
 
+import lv.javaguru.java3.integrations.rest.dto.ProducerDTO;
 import org.springframework.stereotype.Component;
 
 import static com.google.common.base.Preconditions.checkArgument;
@@ -12,7 +13,13 @@ class ProducerValidatorImpl implements ProducerValidator {
     @Override
     public void validate(String name, String url) {
         validateName(name);
-        //validateUrl(url);
+        validateUrl(url);
+    }
+
+    @Override
+    public void validate(ProducerDTO producerDTO) {
+        validateName(producerDTO.getName());
+        validateUrl(producerDTO.getUrl());
     }
 
     private void validateName(String name) {

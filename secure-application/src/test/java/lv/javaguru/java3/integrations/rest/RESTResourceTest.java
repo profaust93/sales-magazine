@@ -6,6 +6,7 @@ import feign.jackson.JacksonEncoder;
 import feign.jaxrs.JAXRSContract;
 import lv.javaguru.java3.config.Application;
 import lv.javaguru.java3.integrations.rest.api.ClientResource;
+import lv.javaguru.java3.integrations.rest.api.ProducerResource;
 import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.runner.RunWith;
@@ -25,6 +26,7 @@ public class RESTResourceTest {
 
     protected ClientResource clientResource;
 
+    protected ProducerResource producerResource;
 
     @Before
     public void init() {
@@ -35,6 +37,12 @@ public class RESTResourceTest {
                 .decoder(new JacksonDecoder())
                 .contract(new JAXRSContract())
                 .target(ClientResource.class, url);
+
+        producerResource = Feign.builder()
+                .encoder(new JacksonEncoder())
+                .decoder(new JacksonDecoder())
+                .contract(new JAXRSContract())
+                .target(ProducerResource.class, url);
     }
 
 }

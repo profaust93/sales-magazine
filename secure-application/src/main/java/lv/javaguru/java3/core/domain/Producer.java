@@ -1,5 +1,6 @@
 package lv.javaguru.java3.core.domain;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import org.hibernate.annotations.Type;
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -28,12 +29,10 @@ public class Producer {
 
     @Column(name="tor", nullable = false)
     @Type(type = "lv.javaguru.java3.core.utils.CustomLocalDateTime")
-    @DateTimeFormat(pattern="dd.MM.yyyy HH:mm:ss")
     private LocalDateTime timeOfRegistration;
 
     @Column(name="last_update", nullable = false)
     @Type(type = "lv.javaguru.java3.core.utils.CustomLocalDateTime")
-    @DateTimeFormat(pattern="dd.MM.yyyy HH:mm:ss")
     private LocalDateTime lastUpdate;
 
     public Long getId() {
