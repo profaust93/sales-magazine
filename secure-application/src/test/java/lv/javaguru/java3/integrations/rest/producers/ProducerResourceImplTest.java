@@ -10,7 +10,7 @@ import static lv.javaguru.java3.integrations.rest.dto.ProducerDTOBuilder.createP
 import static org.hamcrest.Matchers.is;
 import static org.hamcrest.Matchers.notNullValue;
 import static org.junit.Assert.assertThat;
-@Ignore
+
 public class ProducerResourceImplTest extends RESTResourceTest {
 
     @Test
