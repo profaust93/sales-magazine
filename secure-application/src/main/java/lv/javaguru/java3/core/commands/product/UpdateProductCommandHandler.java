@@ -1,5 +1,6 @@
 package lv.javaguru.java3.core.commands.product;
 
+
 import lv.javaguru.java3.core.domain.Product;
 import lv.javaguru.java3.core.services.DomainCommandHandler;
 import lv.javaguru.java3.core.services.product.ProductService;
@@ -8,7 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
-public class GetProductCommandHandler implements DomainCommandHandler<GetProductCommand, GetProductResult>{
+public class UpdateProductCommandHandler implements DomainCommandHandler<UpdateProductCommand, UpdateProductResult>{
+
 
     @Autowired
     private ProductService service;
@@ -17,14 +19,17 @@ public class GetProductCommandHandler implements DomainCommandHandler<GetProduct
     private ProductConverter converter;
 
     @Override
-    public GetProductResult execute(GetProductCommand command) {
-        Product product = service.get(command.getProductId());
+    public UpdateProductResult execute(UpdateProductCommand command) {
+        Product product = service.update(command.getProductId(),
+                                        command.getName(),
+                                        command.getPrice(),
+                                        command.getProductUrl());
         ProductDTO productDTO = converter.convert(product);
-        return new GetProductResult(productDTO);
+        return new UpdateProductResult(productDTO);
     }
 
     @Override
     public Class getCommandType() {
-        return GetProductCommand.class;
+        return UpdateProductCommand.class;
     }
 }

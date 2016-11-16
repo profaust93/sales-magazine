@@ -1,13 +1,15 @@
 package lv.javaguru.java3.core.commands.product;
 
+
+
 import lv.javaguru.java3.core.commands.DomainCommandResult;
 import lv.javaguru.java3.integrations.rest.dto.ProductDTO;
 
-public class GetProductResult implements DomainCommandResult {
+public class UpdateProductResult implements DomainCommandResult{
 
     private ProductDTO productDTO;
 
-    public GetProductResult(ProductDTO productDTO) {
+    public UpdateProductResult(ProductDTO productDTO) {
         this.productDTO = productDTO;
     }
 

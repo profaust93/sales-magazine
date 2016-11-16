@@ -22,7 +22,7 @@ public class ProductValidatorImpl implements ProductValidator{
     @Override
     public void validateId(Long productId) {
         checkNotNull(productId, "Product id must be not null");
-        checkArgument(isNegative(productId), "Product id must be positive number");
+        checkArgument(!isNegative(productId), "Product id must be positive number");
     }
 
     @Override

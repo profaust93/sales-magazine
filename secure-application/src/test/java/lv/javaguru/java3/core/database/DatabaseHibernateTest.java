@@ -23,4 +23,7 @@ public abstract class DatabaseHibernateTest {
 
     @Autowired
     protected  ProducerDAO producerDAO;
+
+    @Autowired
+    protected ProductDAO productDAO;
 }

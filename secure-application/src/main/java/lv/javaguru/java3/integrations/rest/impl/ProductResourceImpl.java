@@ -1,7 +1,6 @@
 package lv.javaguru.java3.integrations.rest.impl;
 
-import lv.javaguru.java3.core.commands.product.CreateProductCommand;
-import lv.javaguru.java3.core.commands.product.CreateProductResult;
+import lv.javaguru.java3.core.commands.product.*;
 import lv.javaguru.java3.core.services.CommandExecutor;
 import lv.javaguru.java3.core.services.product.ProductValidator;
 import lv.javaguru.java3.integrations.rest.api.ProductResource;
@@ -31,7 +30,7 @@ public class ProductResourceImpl implements ProductResource {
     @POST
     @Consumes(APPLICATION_JSON)
     @Produces(APPLICATION_JSON)
-    @Path("/clients")
+    @Path("/product")
     @Override
     public ProductDTO create(ProductDTO productDTO) {
         validator.validate(productDTO);
@@ -43,12 +42,41 @@ public class ProductResourceImpl implements ProductResource {
         return result.getProduct();
     }
 
+    @POST
+    @Consumes(APPLICATION_JSON)
+    @Produces(APPLICATION_JSON)
+    @Path("/product/update")
+    @Override
+    public ProductDTO update(ProductDTO productDTO) {
+        validator.validate(productDTO);
+        UpdateProductCommand command = new UpdateProductCommand(
+                productDTO.getProductId(),
+                productDTO.getName(),
+                productDTO.getPrice(),
+                productDTO.getProductUrl());
+        UpdateProductResult result = commandExecutor.execute(command);
+        return result.getProductDTO();
+    }
+
+    @POST
+    @Consumes(APPLICATION_JSON)
+    @Produces(APPLICATION_JSON)
+    @Path("/product/remove/{productId}")
+    @Override
+    public String remove(@PathParam("productId") Long productId) {
+        RemoveProductCommand command = new RemoveProductCommand(productId);
+        RemoveProductResult result = commandExecutor.execute(command);
+        return result.getMessage();
+    }
+
     @GET
     @Produces(APPLICATION_JSON)
     @Path("/product/{productId}")
     @Override
     public ProductDTO get(@PathParam("productId") Long productId) {
-        return null;
+        GetProductCommand command = new GetProductCommand(productId);
+        GetProductResult result = commandExecutor.execute(command);
+        return result.getProductDTO();
     }
 
 

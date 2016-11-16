@@ -5,11 +5,13 @@ import lv.javaguru.java3.core.domain.Product;
 import lv.javaguru.java3.core.services.product.ProductService;
 import lv.javaguru.java3.core.services.product.ProductValidator;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.Date;
 
+@Component
 public class ProductServiceImpl  implements ProductService{
 
     @Autowired

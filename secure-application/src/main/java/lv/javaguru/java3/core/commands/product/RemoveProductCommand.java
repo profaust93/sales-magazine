@@ -1,12 +1,13 @@
 package lv.javaguru.java3.core.commands.product;
 
+
 import lv.javaguru.java3.core.commands.DomainCommand;
 
-public class GetProductCommand implements DomainCommand<GetProductResult> {
+public class RemoveProductCommand implements DomainCommand<RemoveProductResult> {
 
     private Long productId;
 
-    public GetProductCommand(Long productId) {
+    public RemoveProductCommand(Long productId) {
         this.productId = productId;
     }
 

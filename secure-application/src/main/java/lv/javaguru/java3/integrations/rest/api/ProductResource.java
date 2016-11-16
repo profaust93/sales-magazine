@@ -20,4 +20,16 @@ public interface ProductResource {
     @Produces(APPLICATION_JSON)
     @Path("/product/{productId}")
     ProductDTO get(@PathParam("productId")Long productId);
+
+    @POST
+    @Consumes(APPLICATION_JSON)
+    @Produces(APPLICATION_JSON)
+    @Path("/product/update")
+    ProductDTO update(ProductDTO productDTO);
+
+    @POST
+    @Consumes(APPLICATION_JSON)
+    @Produces(APPLICATION_JSON)
+    @Path("/product/remove/{productId}")
+    String remove(@PathParam("productId")Long productId);
 }
