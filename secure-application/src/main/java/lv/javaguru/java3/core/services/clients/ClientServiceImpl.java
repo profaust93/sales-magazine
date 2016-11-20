@@ -1,14 +1,16 @@
 package lv.javaguru.java3.core.services.clients;
 
-import lv.javaguru.java3.core.database.ClientDAO;
+import lv.javaguru.java3.core.database.ClientRepository;
 import lv.javaguru.java3.core.domain.Client;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-@Component
+@Service
+@Transactional
 class ClientServiceImpl implements ClientService {
 
-    @Autowired private ClientDAO clientDAO;
+    @Autowired private ClientRepository clientRepository;
     @Autowired private ClientValidator clientValidator;
 
 
@@ -25,7 +27,7 @@ class ClientServiceImpl implements ClientService {
 
     @Override
     public Client get(Long clientId) {
-        return clientDAO.getRequired(clientId);
+        return clientRepository.findOne(clientId);
     }
 
 }

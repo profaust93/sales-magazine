@@ -1,6 +1,6 @@
 package lv.javaguru.java3.core.services.clients;
 
-import lv.javaguru.java3.core.database.ClientDAO;
+import lv.javaguru.java3.core.database.ClientRepository;
 import lv.javaguru.java3.core.domain.Client;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -17,7 +17,7 @@ import static org.mockito.Mockito.*;
 public class ClientFactoryImplTest {
 
     @Mock private ClientValidator clientValidator;
-    @Mock private ClientDAO clientDAO;
+    @Mock private ClientRepository clientRepository;
 
     @InjectMocks
     private ClientFactory clientFactory = new ClientFactoryImpl();
@@ -42,9 +42,9 @@ public class ClientFactoryImplTest {
     @Test
     public void createShouldPersistClientAfterValidation() {
         Client client = clientFactory.create(LOGIN, PASSWORD);
-        InOrder inOrder = inOrder(clientValidator, clientDAO);
+        InOrder inOrder = inOrder(clientValidator, clientRepository);
         inOrder.verify(clientValidator).validate(LOGIN, PASSWORD);
-        inOrder.verify(clientDAO).create(client);
+        inOrder.verify(clientRepository).save(client);
     }
 
     @Test

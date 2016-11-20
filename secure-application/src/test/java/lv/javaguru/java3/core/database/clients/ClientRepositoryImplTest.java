@@ -1,15 +1,23 @@
 package lv.javaguru.java3.core.database.clients;
 
-import lv.javaguru.java3.core.database.DatabaseHibernateTest;
+import lv.javaguru.java3.core.database.ClientRepository;
+
 import lv.javaguru.java3.core.domain.Client;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 
 import static lv.javaguru.java3.core.domain.ClientBuilder.createClient;
 import static org.hamcrest.CoreMatchers.*;
 import static org.junit.Assert.assertThat;
 
-public class ClientDAOImplTest extends DatabaseHibernateTest {
+@RunWith(SpringJUnit4ClassRunner.class)
+public class ClientRepositoryImplTest  {
+
+    @Autowired
+    private ClientRepository clientRepository;
 
     @Test
     @Transactional
@@ -18,7 +26,7 @@ public class ClientDAOImplTest extends DatabaseHibernateTest {
                 .withLogin("login")
                 .withPassword("password").build();
         assertThat(client.getId(), is(nullValue()));
-        clientDAO.create(client);
+        clientRepository.save(client);
         assertThat(client.getId(), is(notNullValue()));
     }
 
@@ -28,8 +36,8 @@ public class ClientDAOImplTest extends DatabaseHibernateTest {
         Client client = createClient()
                 .withLogin("login")
                 .withPassword("password").build();
-        clientDAO.create(client);
-        Client clientFromDb = clientDAO.getById(client.getId());
+        clientRepository.save(client);
+        Client clientFromDb = clientRepository.findOne(client.getId());
         assertThat(clientFromDb, is(notNullValue()));
     }
 
