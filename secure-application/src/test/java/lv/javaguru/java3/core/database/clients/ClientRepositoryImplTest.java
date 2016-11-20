@@ -1,19 +1,23 @@
 package lv.javaguru.java3.core.database.clients;
 
+import lv.javaguru.java3.config.Application;
 import lv.javaguru.java3.core.database.ClientRepository;
 
 import lv.javaguru.java3.core.domain.Client;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.transaction.annotation.Transactional;
 
 import static lv.javaguru.java3.core.domain.ClientBuilder.createClient;
 import static org.hamcrest.CoreMatchers.*;
 import static org.junit.Assert.assertThat;
 
-@RunWith(SpringJUnit4ClassRunner.class)
+@RunWith(SpringRunner.class)
+@SpringBootTest(classes = Application.class)
 public class ClientRepositoryImplTest  {
 
     @Autowired
