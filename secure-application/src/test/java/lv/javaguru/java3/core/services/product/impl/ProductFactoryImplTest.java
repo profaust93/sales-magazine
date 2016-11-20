@@ -1,10 +1,9 @@
 package lv.javaguru.java3.core.services.product.impl;
 
-import lv.javaguru.java3.core.database.ProductDAO;
+import lv.javaguru.java3.core.database.ProductRepository;
 import lv.javaguru.java3.core.domain.Product;
 import lv.javaguru.java3.core.services.product.ProductFactory;
 import lv.javaguru.java3.core.services.product.ProductValidator;
-import lv.javaguru.java3.core.services.product.impl.ProductFactoryImpl;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InOrder;
@@ -24,7 +23,7 @@ import static org.mockito.Mockito.verify;
 public class ProductFactoryImplTest {
 
     @Mock
-    private ProductDAO productDAO;
+    private ProductRepository productRepository;
 
     @Mock
     private ProductValidator productValidator;
@@ -52,9 +51,9 @@ public class ProductFactoryImplTest {
     @Test
     public void createShouldPersistProductAfterValidation() {
         Product product = productFactory.create(NAME, PRICE, URL);
-        InOrder inOrder = inOrder(productValidator, productDAO);
+        InOrder inOrder = inOrder(productValidator, productRepository);
         inOrder.verify(productValidator).validate(NAME, PRICE, URL);
-        inOrder.verify(productDAO).create(product);
+        inOrder.verify(productRepository).save(product);
     }
 
     @Test

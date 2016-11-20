@@ -1,6 +1,6 @@
 package lv.javaguru.java3.core.services.clients;
 
-import lv.javaguru.java3.core.database.ClientDAO;
+import lv.javaguru.java3.core.database.ClientRepository;
 import lv.javaguru.java3.core.domain.Client;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -11,7 +11,7 @@ import static lv.javaguru.java3.core.domain.ClientBuilder.createClient;
 class ClientFactoryImpl implements ClientFactory {
 
     @Autowired private ClientValidator clientValidator;
-    @Autowired private ClientDAO clientDAO;
+    @Autowired private ClientRepository clientRepository;
 
 
     @Override
@@ -21,7 +21,7 @@ class ClientFactoryImpl implements ClientFactory {
                 .withLogin(login)
                 .withPassword(password)
                 .build();
-        clientDAO.create(client);
+        clientRepository.save(client);
         return client;
     }
 

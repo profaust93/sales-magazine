@@ -1,6 +1,6 @@
 package lv.javaguru.java3.core.services.producers;
 
-import lv.javaguru.java3.core.database.ProducerDAO;
+import lv.javaguru.java3.core.database.ProducerRepository;
 import lv.javaguru.java3.core.domain.Producer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -10,7 +10,7 @@ import java.time.LocalDateTime;
 @Component
 class ProducerServiceImpl implements ProducerService {
 
-    @Autowired private ProducerDAO producerDAO;
+    @Autowired private ProducerRepository producerRepository;
     @Autowired private ProducerValidator producerValidator;
     
 
@@ -20,20 +20,19 @@ class ProducerServiceImpl implements ProducerService {
         Producer producer = get(producerId);
         producer.setName(newName);
         producer.setUrl(newUrl);
-        producer.setVersion(producer.getVersion()+1);
         producer.setLastUpdate(LocalDateTime.now());
         return producer;
     }
 
     @Override
     public Producer get(Long producerId) {
-        return producerDAO.getRequired(producerId);
+        return producerRepository.findOne(producerId);
     }
 
     @Override
     public void remove(Long producerId) {
-        Producer product = producerDAO.getRequired(producerId);
-        producerDAO.delete(product);
+        Producer product = producerRepository.findOne(producerId);
+        producerRepository.delete(product);
     }
 
 }

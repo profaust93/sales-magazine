@@ -45,7 +45,9 @@ allprojects {
                         'org.springframework.boot:spring-boot-starter-jersey',
                         'com.fasterxml.jackson.core:jackson-databind:2.8.4',
                         'com.fasterxml.jackson.core:jackson-core:2.8.4',
-                        'com.fasterxml.jackson.core:jackson-annotations:2.8.4'
+                        'com.fasterxml.jackson.core:jackson-annotations:2.8.4',
+                        'org.springframework.boot:spring-boot-starter-data-jpa'
+
                 ],
                 aopLib        : [
                         'org.springframework.boot:spring-boot-starter-aop',
@@ -57,13 +59,16 @@ allprojects {
                 ],
                 persistenceLib: [
                         'mysql:mysql-connector-java:6.0.4',
-                        'org.hsqldb:hsqldb:2.3.4'
+                        'org.hsqldb:hsqldb:2.3.4',
+
 
                 ],
                 utilLib       : [
                         'commons-lang:commons-lang:2.6',
                         'com.google.guava:guava:19.0',
                         'org.liquibase:liquibase-core:3.5.3',
+                        'org.projectlombok:lombok:1.16.10'
+
                 ],
                 testLib       : [
                         'org.springframework.boot:spring-boot-starter-test',
@@ -74,11 +79,11 @@ allprojects {
                 ],
 
                 jerseyLib     : [
-                        'org.glassfish.jersey.containers:jersey-container-servlet:2.23.2',
-                        'org.glassfish.jersey.core:jersey-server:2.23.2',
-                        'org.glassfish.jersey.core:jersey-client:2.23.2',
-                        'org.glassfish.jersey.core:jersey-common:2.23.2',
-                        'org.glassfish.jersey.bundles.repackaged:jersey-guava:2.23.2'
+                        'org.glassfish.jersey.containers:jersey-container-servlet:2.24',
+                        'org.glassfish.jersey.core:jersey-server:2.24',
+                        'org.glassfish.jersey.core:jersey-client:2.24',
+                        'org.glassfish.jersey.core:jersey-common:2.24',
+                        'org.glassfish.jersey.bundles.repackaged:jersey-guava:2.24'
 
                 ],
         ]

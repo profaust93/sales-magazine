@@ -3,7 +3,6 @@ package lv.javaguru.java3.integrations.rest.producers;
 import lv.javaguru.java3.integrations.rest.RESTResourceTest;
 import lv.javaguru.java3.integrations.rest.dto.ProducerDTO;
 import org.apache.commons.lang.RandomStringUtils;
-import org.junit.Ignore;
 import org.junit.Test;
 
 import static lv.javaguru.java3.integrations.rest.dto.ProducerDTOBuilder.createProducerDTO;

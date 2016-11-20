@@ -1,5 +1,6 @@
 package lv.javaguru.java3.core.domain;
 
+import lombok.Data;
 import org.hibernate.annotations.Type;
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -7,7 +8,7 @@ import javax.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.Date;
-
+@Data
 @Entity
 @Table(name="product")
 public class Product {
@@ -24,8 +25,7 @@ public class Product {
     @Column(name="price", nullable = false)
     private BigDecimal price;
 
-    @Type(type = "lv.javaguru.java3.core.utils.CustomLocalDateTime")
-    @DateTimeFormat(pattern="dd.MM.yyyy HH:mm:ss")
+
     @Column(name="last_update", nullable = false)
     private LocalDateTime lastUpdate;
 
@@ -36,51 +36,4 @@ public class Product {
     @Column(name="version", nullable = false)
     private Long version;
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public BigDecimal getPrice() {
-        return price;
-    }
-
-    public void setPrice(BigDecimal price) {
-        this.price = price;
-    }
-
-    public LocalDateTime getLastUpdate() {
-        return lastUpdate;
-    }
-
-    public void setLastUpdate(LocalDateTime lastUpdate) {
-        this.lastUpdate = lastUpdate;
-    }
-
-    public String getProductUrl() {
-        return productUrl;
-    }
-
-    public void setProductUrl(String productUrl) {
-        this.productUrl = productUrl;
-    }
-
-    public Long getVersion() {
-        return version;
-    }
-
-    public void setVersion(Long version) {
-        this.version = version;
-    }
 }

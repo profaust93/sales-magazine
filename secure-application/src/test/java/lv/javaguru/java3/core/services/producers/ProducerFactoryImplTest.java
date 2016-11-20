@@ -1,6 +1,6 @@
 package lv.javaguru.java3.core.services.producers;
 
-import lv.javaguru.java3.core.database.ProducerDAO;
+import lv.javaguru.java3.core.database.ProducerRepository;
 import lv.javaguru.java3.core.domain.Producer;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -17,7 +17,7 @@ import static org.mockito.Mockito.*;
 public class ProducerFactoryImplTest {
 
     @Mock private ProducerValidator producerValidator;
-    @Mock private ProducerDAO producerDAO;
+    @Mock private ProducerRepository producerRepository;
 
     @InjectMocks
     private ProducerFactory producerFactory = new ProducerFactoryImpl();
@@ -42,9 +42,9 @@ public class ProducerFactoryImplTest {
     @Test
     public void createShouldPersistProducerAfterValidation() {
         Producer producer = producerFactory.create(NAME, URL);
-        InOrder inOrder = inOrder(producerValidator, producerDAO);
+        InOrder inOrder = inOrder(producerValidator, producerRepository);
         inOrder.verify(producerValidator).validate(NAME, URL);
-        inOrder.verify(producerDAO).create(producer);
+        inOrder.verify(producerRepository).save(producer);
     }
 
     @Test

@@ -1,7 +1,7 @@
 package lv.javaguru.java3.core.services.product.impl;
 
 import static lv.javaguru.java3.core.domain.ProductBuilder.createProduct;
-import lv.javaguru.java3.core.database.ProductDAO;
+import lv.javaguru.java3.core.database.ProductRepository;
 import lv.javaguru.java3.core.domain.Product;
 import lv.javaguru.java3.core.services.product.ProductFactory;
 import lv.javaguru.java3.core.services.product.ProductValidator;
@@ -15,7 +15,7 @@ import java.time.LocalDateTime;
 public class ProductFactoryImpl implements ProductFactory {
 
     @Autowired
-    private ProductDAO productDAO;
+    private ProductRepository productRepository;
 
     @Autowired
     private ProductValidator productValidator;
@@ -31,7 +31,7 @@ public class ProductFactoryImpl implements ProductFactory {
                 .withProductUrl(productUrl)
                 .withLastUpdate(now)
                 .build();
-        productDAO.create(product);
+        productRepository.save(product);
         return product;
     }
 }

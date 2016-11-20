@@ -1,14 +1,15 @@
 package lv.javaguru.java3.core.domain;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
-import org.hibernate.annotations.Type;
-import org.springframework.format.annotation.DateTimeFormat;
+
+import lombok.Data;
+
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
 @Table(name="producers")
+@Data
 public class Producer {
 
     @Id
@@ -28,58 +29,9 @@ public class Producer {
     private Long version;
 
     @Column(name="tor", nullable = false)
-    @Type(type = "lv.javaguru.java3.core.utils.CustomLocalDateTime")
     private LocalDateTime timeOfRegistration;
 
     @Column(name="last_update", nullable = false)
-    @Type(type = "lv.javaguru.java3.core.utils.CustomLocalDateTime")
     private LocalDateTime lastUpdate;
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getUrl() {
-        return url;
-    }
-
-    public void setUrl(String url) {
-        this.url = url;
-    }
-
-    public LocalDateTime getTimeOfRegistration() {
-        return timeOfRegistration;
-    }
-
-    public void setTimeOfRegistration(LocalDateTime timeOfRegistration) {
-        this.timeOfRegistration = timeOfRegistration;
-    }
-
-    public LocalDateTime getLastUpdate() {
-        return lastUpdate;
-    }
-
-    public void setLastUpdate(LocalDateTime lastUpdate) {
-        this.lastUpdate = lastUpdate;
-    }
-
-    public Long getVersion() {
-        return version;
-    }
-
-    public void setVersion(Long version) {
-        this.version = version;
-    }
 }
