@@ -40,7 +40,6 @@ public class ProducerDTOBuilder {
         return this;
     }
 
-
     public ProducerDTOBuilder withUrl(String producerUrl) {
         this.producerUrl = producerUrl;
         return this;
