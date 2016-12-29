@@ -1,5 +1,6 @@
 package lv.javaguru.java3.jms.controller;
 
+import lv.javaguru.java3.jms.services.MessageReceiver;
 import lv.javaguru.java3.jms.services.MessageSender;
 import lv.javaguru.java3.jms.services.products.GetProductReceiver;
 import org.apache.log4j.Logger;
@@ -35,10 +36,11 @@ public class GetProductController {
     RabbitTemplate template;
 
     @Autowired
-    GetProductReceiver receiver;
+    @Qualifier("getProductReceiver")
+    MessageReceiver receiver;
 
     @Autowired
-    @Qualifier("GetProductSender")
+    @Qualifier("getProductSender")
     MessageSender sender;
 
     @Resource(name = "receivedMessages")

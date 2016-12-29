@@ -8,13 +8,14 @@ import org.springframework.amqp.rabbit.support.CorrelationData;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.messaging.Message;
 import org.springframework.messaging.support.GenericMessage;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 
-@Service
+@Component("getProductSender")
 public class GetProductSender implements MessageSender{
     Logger logger = Logger.getLogger(GetProductSender.class);
 

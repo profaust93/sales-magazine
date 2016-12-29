@@ -13,8 +13,8 @@ import java.util.concurrent.Executors;
 @Configuration
 public class SecureAppConfig {
     @Bean
-    public Queue toApiAppQ() {
-        return new Queue("toPublicQueue");
+    public Queue toPublicAppQueue() {
+        return new Queue("toPublicAppQueue");
     }
 
     @Bean
@@ -24,7 +24,7 @@ public class SecureAppConfig {
 
     @Bean
     public Binding toApiAppBinding(){
-        return BindingBuilder.bind(toApiAppQ()).to(toApiAppExchange()).with("*");
+        return BindingBuilder.bind(toPublicAppQueue()).to(toApiAppExchange()).with("*");
     }
 
     @Bean(name = "secureAppExecutor")

@@ -15,7 +15,7 @@ import java.util.concurrent.Executors;
 @Configuration
 public class PublicAppConfig {
     @Bean
-    public Queue toSecureAppQ() {
+    public Queue toSecureAppQueue() {
         return new Queue("toSecureAppQueue");
     }
 
@@ -26,7 +26,7 @@ public class PublicAppConfig {
 
     @Bean
     public Binding roSecureAppBinding() {
-        return BindingBuilder.bind(toSecureAppQ()).to(toSecureAppExchange()).with("*");
+        return BindingBuilder.bind(toSecureAppQueue()).to(toSecureAppExchange()).with("*");
     }
 
     @Primary
