@@ -2,17 +2,22 @@ package lv.javaguru.java3.jms.config;
 
 import lv.javaguru.java3.core.services.product.ProductService;
 import org.apache.log4j.Logger;
+import org.springframework.amqp.rabbit.annotation.EnableRabbit;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.messaging.Message;
 import org.springframework.messaging.support.GenericMessage;
+import org.springframework.stereotype.Component;
 
 import javax.annotation.Resource;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.ExecutorService;
 
+@EnableRabbit //нужно для активации обработки аннотаций @RabbitListener
+@Component
 public class SecureAppListener {
     Logger logger = Logger.getLogger(SecureAppListener.class);
 
