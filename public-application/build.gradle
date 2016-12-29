@@ -1,13 +1,43 @@
-version '1.0-SNAPSHOT'
-
-apply plugin: 'java'
-
-sourceCompatibility = 1.5
+buildscript {
+    ext {
+        springBootVersion = '1.4.1.RELEASE'
+    }
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+    }
+}
 
 repositories {
     mavenCentral()
 }
+jar {
+    baseName = 'public-applicaiton'
+}
+
+
 
 dependencies {
-    testCompile group: 'junit', name: 'junit', version: '4.11'
+//    compile project(':secure-application')
+    compile libraries.bootLib
+    compile libraries.aopLib
+    compile libraries.ioLib
+    compile libraries.persistenceLib
+    compile libraries.utilLib
+    compile libraries.jerseyLib
+
+    compile('org.springframework.boot:spring-boot-starter-data-jpa') {
+        exclude group: 'org.hibernate'
+    }
+    compile group: 'org.hibernate', name: 'hibernate-core', version: '5.2.3.Final'
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-parent', version: '1.2.1.RELEASE'
+    compile group: 'org.springframework.amqp', name: 'spring-rabbit', version: '1.4.5.RELEASE'
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: '1.4.2.RELEASE'
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-amqp', version: '1.4.2.RELEASE'
+    compile group: 'javax.jms', name: 'javax.jms-api', version: '2.0'
+    compile group: 'javax.ws.rs', name: 'javax.ws.rs-api', version: '2.0'
+    testCompile libraries.testLib
+
 }
