@@ -1,6 +1,6 @@
 package lv.javaguru.java3.core.database.producers;
 
-import lv.javaguru.java3.config.Application;
+import lv.javaguru.java3.config.SecureApplication;
 import lv.javaguru.java3.core.database.ProducerRepository;
 import lv.javaguru.java3.core.domain.Producer;
 import org.junit.Test;
@@ -14,7 +14,7 @@ import static lv.javaguru.java3.core.domain.ProducerBuilder.createProducer;
 import static org.hamcrest.CoreMatchers.*;
 import static org.junit.Assert.assertThat;
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = Application.class)
+@SpringBootTest(classes = SecureApplication.class)
 public class ProducerRepositoryTest {
 
     @Autowired

@@ -1,6 +1,6 @@
 package lv.javaguru.java3.core.database.products;
 
-import lv.javaguru.java3.config.Application;
+import lv.javaguru.java3.config.SecureApplication;
 import lv.javaguru.java3.core.database.ProductRepository;
 import lv.javaguru.java3.core.domain.Product;
 import org.junit.Before;
@@ -20,7 +20,7 @@ import static org.hamcrest.CoreMatchers.nullValue;
 import static org.junit.Assert.assertThat;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = Application.class)
+@SpringBootTest(classes = SecureApplication.class)
 public class ProductRepositoryTest {
 
     @Autowired

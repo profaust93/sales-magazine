@@ -1,12 +1,14 @@
 package lv.javaguru.java3.jms.config;
 
+import lv.javaguru.java3.core.commands.product.ProductConverter;
+import lv.javaguru.java3.core.domain.Product;
 import lv.javaguru.java3.core.services.product.ProductService;
+import lv.javaguru.java3.dto.ProductDTO;
 import org.apache.log4j.Logger;
 import org.springframework.amqp.rabbit.annotation.EnableRabbit;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.messaging.Message;
 import org.springframework.messaging.support.GenericMessage;
 import org.springframework.stereotype.Component;
@@ -26,7 +28,8 @@ public class SecureAppListener {
 
     @Resource(name = "secureAppExecutor")
     ExecutorService executor;
-
+    @Autowired
+    ProductConverter converter;
     @Autowired
     ProductService service;
 
@@ -34,13 +37,13 @@ public class SecureAppListener {
     public void onMessage(Message<String> message) {
         executor.submit(() -> {
             String correlationid = (String) message.getHeaders().get("correlationId");
-//            String response = service.method((String) message.getPayload());
-            String response = service.get(0l).getName();
+            Product product = service.get(Long.valueOf(message.getPayload()));
+            ProductDTO response = converter.convert(product);
             logger.info(response);
             Map<String, Object> header = new HashMap<>();
             header.put("correlationId", correlationid);
             Message responseMessage = new GenericMessage(response, header);
-            template.convertAndSend("toApiApp", "*", responseMessage);
+            template.convertAndSend("toPublicApp", "*", responseMessage);
         });
     }
 }

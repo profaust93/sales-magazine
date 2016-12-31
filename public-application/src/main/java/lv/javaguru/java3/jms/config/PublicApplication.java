@@ -10,10 +10,10 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @EnableAsync
 @ComponentScan(basePackages = {"lv.javaguru.java3"})
 @EnableTransactionManagement
-public class Application {
+public class PublicApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(Application.class, args);
+        SpringApplication.run(PublicApplication.class, args);
     }
 
 }

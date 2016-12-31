@@ -1,7 +1,7 @@
 package lv.javaguru.java3.core.services.product.impl;
 
 import lv.javaguru.java3.core.services.product.ProductValidator;
-import lv.javaguru.java3.integrations.rest.dto.ProductDTO;
+import lv.javaguru.java3.dto.ProductDTO;
 import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;

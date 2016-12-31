@@ -20,7 +20,7 @@ jar {
 
 
 dependencies {
-//    compile project(':secure-application')
+    compile project(':public-shared-api')
     compile libraries.bootLib
     compile libraries.aopLib
     compile libraries.ioLib

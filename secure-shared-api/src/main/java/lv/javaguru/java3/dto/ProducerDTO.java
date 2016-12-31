@@ -1,4 +1,4 @@
-package lv.javaguru.java3.integrations.rest.dto;
+package lv.javaguru.java3.dto;
 
 
 import com.fasterxml.jackson.annotation.JsonFormat;

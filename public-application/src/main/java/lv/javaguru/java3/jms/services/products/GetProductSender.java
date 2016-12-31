@@ -1,6 +1,7 @@
 package lv.javaguru.java3.jms.services.products;
 
 
+import lv.javaguru.java3.dto.ProductDTO;
 import lv.javaguru.java3.jms.services.MessageSender;
 import org.apache.log4j.Logger;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
@@ -29,7 +30,7 @@ public class GetProductSender implements MessageSender{
         CorrelationData correlationData = new CorrelationData(corrId);
         Map<String, Object> header = new HashMap<>();
         header.put("correlationId", corrId);
-        Message<String> message = new GenericMessage(msg, header);
+        Message<ProductDTO> message = new GenericMessage(msg, header);
         template.convertAndSend("toSecureApp", "*", message);
         return corrId;
     }

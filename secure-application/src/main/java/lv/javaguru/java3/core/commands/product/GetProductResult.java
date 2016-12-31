@@ -1,7 +1,7 @@
 package lv.javaguru.java3.core.commands.product;
 
 import lv.javaguru.java3.core.commands.DomainCommandResult;
-import lv.javaguru.java3.integrations.rest.dto.ProductDTO;
+import lv.javaguru.java3.dto.ProductDTO;
 
 public class GetProductResult implements DomainCommandResult {
 

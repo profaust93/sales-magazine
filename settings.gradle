@@ -3,4 +3,5 @@ include 'secure-application'
 include 'secure-shared-api'
 include 'public-application'
 include 'public-application'
+include 'public-shared-api'
 

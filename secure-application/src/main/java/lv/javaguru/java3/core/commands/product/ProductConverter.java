@@ -1,10 +1,10 @@
 package lv.javaguru.java3.core.commands.product;
 
 import lv.javaguru.java3.core.domain.Product;
-import lv.javaguru.java3.integrations.rest.dto.ProductDTO;
+import lv.javaguru.java3.dto.ProductDTO;
 import org.springframework.stereotype.Component;
 
-import static lv.javaguru.java3.integrations.rest.dto.ProductDTOBuilder.createProductDTO;
+import static lv.javaguru.java3.dto.ProductDTOBuilder.createProductDTO;
 
 @Component
 public class ProductConverter {

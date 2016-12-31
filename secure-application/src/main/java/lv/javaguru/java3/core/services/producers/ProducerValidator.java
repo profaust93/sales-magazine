@@ -1,7 +1,7 @@
 package lv.javaguru.java3.core.services.producers;
 
 
-import lv.javaguru.java3.integrations.rest.dto.ProducerDTO;
+import lv.javaguru.java3.dto.ProducerDTO;
 
 public interface ProducerValidator {
 

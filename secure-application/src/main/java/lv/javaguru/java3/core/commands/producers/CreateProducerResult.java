@@ -1,7 +1,7 @@
 package lv.javaguru.java3.core.commands.producers;
 
 import lv.javaguru.java3.core.commands.DomainCommandResult;
-import lv.javaguru.java3.integrations.rest.dto.ProducerDTO;
+import lv.javaguru.java3.dto.ProducerDTO;
 
 public class CreateProducerResult implements DomainCommandResult {
 

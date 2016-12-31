@@ -4,7 +4,7 @@ import feign.Feign;
 import feign.jackson.JacksonDecoder;
 import feign.jackson.JacksonEncoder;
 import feign.jaxrs.JAXRSContract;
-import lv.javaguru.java3.config.Application;
+import lv.javaguru.java3.config.SecureApplication;
 import lv.javaguru.java3.integrations.rest.api.ClientResource;
 import lv.javaguru.java3.integrations.rest.api.ProducerResource;
 import org.junit.Before;
@@ -13,13 +13,12 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.boot.test.WebIntegrationTest;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.junit4.SpringRunner;
 
 @Ignore
 @RunWith(SpringRunner.class)
 @WebIntegrationTest(randomPort = true)
-@SpringApplicationConfiguration(classes = {Application.class})
+@SpringApplicationConfiguration(classes = {SecureApplication.class})
 public class RESTResourceTest {
 
     @Value("${local.server.port}")

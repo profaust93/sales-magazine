@@ -1,6 +1,6 @@
 package lv.javaguru.java3.core.database.clients;
 
-import lv.javaguru.java3.config.Application;
+import lv.javaguru.java3.config.SecureApplication;
 import lv.javaguru.java3.core.database.ClientRepository;
 import lv.javaguru.java3.core.domain.Client;
 import org.junit.Test;
@@ -15,7 +15,7 @@ import static org.hamcrest.CoreMatchers.*;
 import static org.junit.Assert.assertThat;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = Application.class)
+@SpringBootTest(classes = SecureApplication.class)
 public class ClientRepositoryTest {
 
     @Autowired

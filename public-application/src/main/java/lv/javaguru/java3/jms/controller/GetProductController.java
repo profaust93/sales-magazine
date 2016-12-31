@@ -1,5 +1,6 @@
 package lv.javaguru.java3.jms.controller;
 
+import lv.javaguru.java3.dto.ProductDTO;
 import lv.javaguru.java3.jms.services.MessageReceiver;
 import lv.javaguru.java3.jms.services.MessageSender;
 import lv.javaguru.java3.jms.services.products.GetProductReceiver;
@@ -46,16 +47,16 @@ public class GetProductController {
     @Resource(name = "receivedMessages")
     ConcurrentHashMap<String, Object> receivedMessages;
 
-    @RequestMapping("/emit")
+    @RequestMapping("/product")
     @Consumes(APPLICATION_JSON)
     @Produces(APPLICATION_JSON)
     @GET
     @ResponseBody
-    public DeferredResult<ResponseEntity<Object>> queue1(@RequestParam("text") String text) throws InterruptedException, ExecutionException, TimeoutException {
+    public DeferredResult<ResponseEntity<ProductDTO>> queue1(@RequestParam("id") String productId) throws InterruptedException, ExecutionException, TimeoutException {
         DeferredResult response = new DeferredResult();
-        String id = sender.sendMsg(text);
-        String answer = (String) receiver.receiveMessage(id);
-        System.out.println("ANSWER: " + answer);
+        String id = sender.sendMsg(productId);
+        ProductDTO answer = (ProductDTO) receiver.receiveMessage(id);
+        System.out.println("ANSWER: " + answer.toString());
         response.setResult(new ResponseEntity<>(answer, HttpStatus.OK));
         return response;
     }

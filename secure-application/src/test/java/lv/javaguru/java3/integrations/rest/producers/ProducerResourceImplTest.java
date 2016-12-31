@@ -1,11 +1,11 @@
 package lv.javaguru.java3.integrations.rest.producers;
 
 import lv.javaguru.java3.integrations.rest.RESTResourceTest;
-import lv.javaguru.java3.integrations.rest.dto.ProducerDTO;
+import lv.javaguru.java3.dto.ProducerDTO;
 import org.apache.commons.lang.RandomStringUtils;
 import org.junit.Test;
 
-import static lv.javaguru.java3.integrations.rest.dto.ProducerDTOBuilder.createProducerDTO;
+import static lv.javaguru.java3.dto.ProducerDTOBuilder.createProducerDTO;
 import static org.hamcrest.Matchers.is;
 import static org.hamcrest.Matchers.notNullValue;
 import static org.junit.Assert.assertThat;

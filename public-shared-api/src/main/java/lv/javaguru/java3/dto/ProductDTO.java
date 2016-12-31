@@ -1,9 +1,8 @@
-package lv.javaguru.java3.integrations.rest.dto;
+package lv.javaguru.java3.dto;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
-import java.util.Date;
 
 public class ProductDTO implements Serializable {
 
@@ -52,5 +51,16 @@ public class ProductDTO implements Serializable {
     public ProductDTO setLastUpdate(LocalDateTime lastUpdate) {
         this.lastUpdate = lastUpdate;
         return this;
+    }
+
+    @Override
+    public String toString() {
+        return "ProductDTO{" +
+                "productId=" + productId +
+                ", name='" + name + '\'' +
+                ", price=" + price +
+                ", productUrl='" + productUrl + '\'' +
+                ", lastUpdate=" + lastUpdate +
+                '}';
     }
 }

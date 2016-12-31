@@ -14,10 +14,10 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @EntityScan("lv.javaguru.java3.core.domain")
 @EnableJpaRepositories(basePackages = "lv.javaguru.java3.core")
 @EnableTransactionManagement
-public class Application {
+public class SecureApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(Application.class, args);
+        SpringApplication.run(SecureApplication.class, args);
     }
 
 }
