@@ -3,9 +3,9 @@ package lv.javaguru.java3.integrations.rest.impl;
 import lv.javaguru.java3.core.commands.producers.*;
 import lv.javaguru.java3.core.services.CommandExecutor;
 import lv.javaguru.java3.core.services.producers.ProducerValidator;
+import lv.javaguru.java3.dto.ProducerDTO;
 import lv.javaguru.java3.integrations.rest.api.ProducerResource;
 import lv.javaguru.java3.integrations.rest.api.RESTResource;
-import lv.javaguru.java3.dto.ProducerDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

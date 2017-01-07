@@ -1,6 +1,7 @@
 package lv.javaguru.java3.jms.controller;
 
 import lv.javaguru.java3.dto.ProductDTO;
+import lv.javaguru.java3.dto.SalesClassifier;
 import lv.javaguru.java3.jms.services.MessageReceiver;
 import lv.javaguru.java3.jms.services.MessageSender;
 import lv.javaguru.java3.jms.services.products.GetProductReceiver;
@@ -54,9 +55,8 @@ public class GetProductController {
     @ResponseBody
     public DeferredResult<ResponseEntity<ProductDTO>> queue1(@RequestParam("id") String productId) throws InterruptedException, ExecutionException, TimeoutException {
         DeferredResult response = new DeferredResult();
-        String id = sender.sendMsg(productId);
+        String id = sender.sendMsg(productId, SalesClassifier.PRODUCT);
         ProductDTO answer = (ProductDTO) receiver.receiveMessage(id);
-        System.out.println("ANSWER: " + answer.toString());
         response.setResult(new ResponseEntity<>(answer, HttpStatus.OK));
         return response;
     }

@@ -1,15 +1,12 @@
 package lv.javaguru.java3.core.domain;
 
-
-import lombok.Data;
-
-
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name="producers")
-@Data
 public class Producer {
 
     @Id
@@ -34,4 +31,62 @@ public class Producer {
     @Column(name="last_update", nullable = false)
     private LocalDateTime lastUpdate;
 
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "producer")
+    private Set<Product> products = new HashSet<>(0);
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
+    }
+
+    public Long getVersion() {
+        return version;
+    }
+
+    public void setVersion(Long version) {
+        this.version = version;
+    }
+
+    public LocalDateTime getTimeOfRegistration() {
+        return timeOfRegistration;
+    }
+
+    public void setTimeOfRegistration(LocalDateTime timeOfRegistration) {
+        this.timeOfRegistration = timeOfRegistration;
+    }
+
+    public LocalDateTime getLastUpdate() {
+        return lastUpdate;
+    }
+
+    public void setLastUpdate(LocalDateTime lastUpdate) {
+        this.lastUpdate = lastUpdate;
+    }
+
+    public Set<Product> getProducts() {
+        return products;
+    }
+
+    public void setProducts(Set<Product> products) {
+        this.products = products;
+    }
 }

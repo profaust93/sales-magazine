@@ -3,7 +3,7 @@ package lv.javaguru.java3.jms.config;
 import lv.javaguru.java3.core.commands.product.ProductConverter;
 import lv.javaguru.java3.core.domain.Product;
 import lv.javaguru.java3.core.services.product.ProductService;
-import lv.javaguru.java3.dto.ProductDTO;
+import lv.javaguru.java3.dto.SalesClassifier;
 import org.apache.log4j.Logger;
 import org.springframework.amqp.rabbit.annotation.EnableRabbit;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
@@ -28,22 +28,34 @@ public class SecureAppListener {
 
     @Resource(name = "secureAppExecutor")
     ExecutorService executor;
+
     @Autowired
     ProductConverter converter;
+
     @Autowired
     ProductService service;
 
     @RabbitListener(queues = "toSecureAppQueue")
     public void onMessage(Message<String> message) {
         executor.submit(() -> {
-            String correlationid = (String) message.getHeaders().get("correlationId");
-            Product product = service.get(Long.valueOf(message.getPayload()));
-            ProductDTO response = converter.convert(product);
+            String correlationId = (String) message.getHeaders().get("correlationId");
+            SalesClassifier exchange = (SalesClassifier) message.getHeaders().get("exchange");
+            Object response = null;
+            switch (exchange) {
+                case PRODUCT:
+                    Product product = service.get(Long.valueOf(message.getPayload()));
+                    response = converter.convert(product);
+                    break;
+                case PRODUCER:
+                    logger.info("producer service");
+                    break;
+            }
             logger.info(response);
             Map<String, Object> header = new HashMap<>();
-            header.put("correlationId", correlationid);
+            header.put("correlationId", correlationId);
             Message responseMessage = new GenericMessage(response, header);
-            template.convertAndSend("toPublicApp", "*", responseMessage);
+            template.convertAndSend("toPublicApp", exchange.name(), responseMessage);
+
         });
     }
 }

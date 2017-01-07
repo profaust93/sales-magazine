@@ -2,7 +2,6 @@ package lv.javaguru.java3.core.domain;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
-import java.util.Date;
 
 public class ProductBuilder {
 

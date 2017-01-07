@@ -2,7 +2,6 @@ package lv.javaguru.java3.jms.services.products;
 
 import lv.javaguru.java3.jms.services.MessageReceiver;
 import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.util.concurrent.ConcurrentHashMap;
