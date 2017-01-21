@@ -20,9 +20,9 @@ public class ProductValidatorImpl implements ProductValidator{
     }
 
     @Override
-    public void validateId(Long productId) {
-        checkNotNull(productId, "Product id must be not null");
-        checkArgument(!isNegative(productId), "Product id must be positive number");
+    public void validateId(Long productId, String entityName) {
+        checkNotNull(productId, entityName + " id must be not null");
+        checkArgument(!isNegative(productId), entityName + " id must be positive number");
     }
 
     @Override
@@ -31,6 +31,7 @@ public class ProductValidatorImpl implements ProductValidator{
         validateName(productDTO.getName());
         validateProductUrl(productDTO.getProductUrl());
         validatePrice(productDTO.getPrice());
+        validateId(productDTO.getProducerId(), "Producer");
     }
 
     private void validateName(String name){

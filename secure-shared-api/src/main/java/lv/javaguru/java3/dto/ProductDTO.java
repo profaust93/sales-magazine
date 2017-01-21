@@ -11,6 +11,7 @@ public class ProductDTO implements Serializable {
     private BigDecimal price;
     private String productUrl;
     private LocalDateTime lastUpdate;
+    private Long producerId;
 
     public Long getProductId() {
         return productId;
@@ -53,6 +54,14 @@ public class ProductDTO implements Serializable {
         return this;
     }
 
+    public Long getProducerId() {
+        return producerId;
+    }
+
+    public void setProducerId(Long producerId) {
+        this.producerId = producerId;
+    }
+
     @Override
     public String toString() {
         return "ProductDTO{" +
@@ -61,6 +70,7 @@ public class ProductDTO implements Serializable {
                 ", price=" + price +
                 ", productUrl='" + productUrl + '\'' +
                 ", lastUpdate=" + lastUpdate +
+                ", producerId=" + producerId +
                 '}';
     }
 }

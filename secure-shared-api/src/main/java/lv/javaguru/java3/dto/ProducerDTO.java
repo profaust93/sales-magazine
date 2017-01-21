@@ -74,4 +74,16 @@ public class ProducerDTO implements Serializable{
     public void setVersion(Long version) {
         this.version = version;
     }
+
+    @Override
+    public String toString() {
+        return "ProducerDTO{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", url='" + url + '\'' +
+                ", version=" + version +
+                ", timeOfRegistration=" + timeOfRegistration +
+                ", lastUpdate=" + lastUpdate +
+                '}';
+    }
 }

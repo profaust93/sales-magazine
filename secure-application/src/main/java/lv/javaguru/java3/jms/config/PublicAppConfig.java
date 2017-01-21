@@ -15,24 +15,6 @@ import java.util.concurrent.Executors;
 
 @Configuration
 public class PublicAppConfig {
-    @Bean
-    public Queue toSecureAppQueue() {
-        return new Queue("toSecureAppQueue", true, false, true);
-    }
 
-    @Bean
-    public DirectExchange toSecureAppExchange() {
-        return new DirectExchange("toSecureApp");
-    }
-
-    @Bean
-    public Binding toSecureAppBinding() {
-        return BindingBuilder.bind(toSecureAppQueue()).to(toSecureAppExchange()).with(SalesClassifier.PRODUCER.name());
-    }
-
-    @Bean
-    public Binding toSecureAppBinding2() {
-        return BindingBuilder.bind(toSecureAppQueue()).to(toSecureAppExchange()).with(SalesClassifier.PRODUCT.name());
-    }
 
 }

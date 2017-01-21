@@ -11,6 +11,7 @@ public class ProductBuilder {
     private LocalDateTime lastUpdate;
     private String productUrl;
     private Long version;
+    private Producer producer;
 
     private ProductBuilder(){
 
@@ -28,6 +29,7 @@ public class ProductBuilder {
         product.setLastUpdate(lastUpdate);
         product.setProductUrl(productUrl);
         product.setVersion(version);
+        product.setProducer(producer);
         return product;
     }
 
@@ -58,6 +60,11 @@ public class ProductBuilder {
 
     public ProductBuilder withVersion(Long version) {
         this.version = version;
+        return this;
+    }
+
+    public ProductBuilder withProducer(Producer producer){
+        this.producer = producer;
         return this;
     }
 }

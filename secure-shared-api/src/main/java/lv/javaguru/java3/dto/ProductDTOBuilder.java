@@ -1,5 +1,7 @@
 package lv.javaguru.java3.dto;
 
+import com.oracle.jrockit.jfr.Producer;
+
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
@@ -10,6 +12,8 @@ public class ProductDTOBuilder {
     private BigDecimal price;
     private String productUrl;
     private LocalDateTime lastUpdate;
+    private Long producerId;
+    private ProducerDTO producerDTO;
 
     private ProductDTOBuilder() {
     }
@@ -24,6 +28,7 @@ public class ProductDTOBuilder {
         productDTO.setProductUrl(productUrl);
         productDTO.setProductId(productId);
         productDTO.setLastUpdate(lastUpdate);
+        productDTO.setProducerId(producerId);
         return productDTO;
     }
 
@@ -49,6 +54,11 @@ public class ProductDTOBuilder {
 
     public ProductDTOBuilder withLastUpdate(LocalDateTime lastUpdate) {
         this.lastUpdate = lastUpdate;
+        return this;
+    }
+
+    public ProductDTOBuilder withProducer(ProducerDTO producerDTO) {
+        this.producerDTO = producerDTO;
         return this;
     }
 }

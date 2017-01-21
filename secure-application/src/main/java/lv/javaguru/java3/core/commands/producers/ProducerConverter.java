@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 import static lv.javaguru.java3.dto.ProducerDTOBuilder.createProducerDTO;
 
 @Component
-class ProducerConverter {
+public class ProducerConverter {
 
     public ProducerDTO convert(Producer producer) {
         return createProducerDTO()

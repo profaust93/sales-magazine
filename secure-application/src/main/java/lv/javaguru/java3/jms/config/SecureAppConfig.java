@@ -24,16 +24,36 @@ public class SecureAppConfig {
     }
 
     @Bean
-    public Binding toApiAppBinding(){
+    public Binding toPublicAppBindingProducer(){
         return BindingBuilder.bind(toPublicAppQueue()).to(toApiAppExchange()).with(SalesClassifier.PRODUCER.name());
     }
     @Bean
-    public Binding toApiAppBinding2(){
+    public Binding toPublicAppBindingProduct(){
         return BindingBuilder.bind(toPublicAppQueue()).to(toApiAppExchange()).with(SalesClassifier.PRODUCT.name());
     }
 
     @Bean(name = "secureAppExecutor")
     public ExecutorService secureAppExecutor(){
         return Executors.newFixedThreadPool(10);
+    }
+
+    @Bean
+    public Queue toSecureAppQueue() {
+        return new Queue("toSecureAppQueue", true, false, true);
+    }
+
+    @Bean
+    public DirectExchange toSecureAppExchange() {
+        return new DirectExchange("toSecureApp");
+    }
+
+    @Bean
+    public Binding toSecureAppBindingProducer() {
+        return BindingBuilder.bind(toSecureAppQueue()).to(toSecureAppExchange()).with(SalesClassifier.PRODUCER.name());
+    }
+
+    @Bean
+    public Binding toSecureAppBindingProduct() {
+        return BindingBuilder.bind(toSecureAppQueue()).to(toSecureAppExchange()).with(SalesClassifier.PRODUCT.name());
     }
 }

@@ -23,7 +23,8 @@ public class CreateProductCommandHandler implements DomainCommandHandler<CreateP
         Product product = factory.create(
                 command.getName(),
                 command.getPrice(),
-                command.getProductUrl()
+                command.getProductUrl(),
+                command.getProducerId()
         );
         ProductDTO productDTO = converter.convert(product);
         return new CreateProductResult(productDTO);

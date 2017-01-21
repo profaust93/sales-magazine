@@ -9,7 +9,7 @@ import java.time.LocalDateTime;
 public class Product {
 
     @Id
-    @GeneratedValue(generator = "product_seq", strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(generator = "product_seq", strategy = GenerationType.SEQUENCE )
     @SequenceGenerator(name = "product_seq", sequenceName = "product_seq", allocationSize = 1)
     @Column(name="product_id", nullable = false)
     private Long id;

@@ -8,7 +8,7 @@ public interface ProductValidator {
 
     void validate(String name, BigDecimal price, String productUrl);
 
-    void validateId(Long productId);
+    void validateId(Long productId, String entityName);
 
     void validate(ProductDTO productDTO);
 }

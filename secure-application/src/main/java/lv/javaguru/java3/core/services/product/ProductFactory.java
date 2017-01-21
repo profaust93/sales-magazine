@@ -6,6 +6,6 @@ import java.math.BigDecimal;
 
 public interface ProductFactory {
 
-    Product create(String name, BigDecimal price, String productUrl);
+    Product create(String name, BigDecimal price, String productUrl, Long producerId);
 
 }

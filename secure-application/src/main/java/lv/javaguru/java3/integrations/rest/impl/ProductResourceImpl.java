@@ -6,6 +6,7 @@ import lv.javaguru.java3.core.services.product.ProductValidator;
 import lv.javaguru.java3.dto.ProductDTO;
 import lv.javaguru.java3.integrations.rest.api.ProductResource;
 import lv.javaguru.java3.integrations.rest.api.RESTResource;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -17,6 +18,7 @@ import static javax.ws.rs.core.MediaType.APPLICATION_JSON;
 @Path(RESTResource.API_PATH)
 public class ProductResourceImpl implements ProductResource {
 
+    private static final Logger log = Logger.getLogger(ProductResourceImpl.class);
     private CommandExecutor commandExecutor;
 
     @Autowired
@@ -37,7 +39,8 @@ public class ProductResourceImpl implements ProductResource {
         CreateProductCommand command = new CreateProductCommand(
                 productDTO.getName(),
                 productDTO.getPrice(),
-                productDTO.getProductUrl());
+                productDTO.getProductUrl(),
+                productDTO.getProducerId());
         CreateProductResult result = commandExecutor.execute(command);
         return result.getProduct();
     }
