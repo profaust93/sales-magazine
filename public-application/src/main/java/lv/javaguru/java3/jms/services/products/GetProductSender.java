@@ -30,7 +30,6 @@ public class GetProductSender implements MessageSender{
         header.put("exchange", exchange);
         Message<ProductDTO> message = new GenericMessage(msg, header);
         template.convertAndSend("toSecureApp", exchange.name(), message);
-        logger.info("Sending Message: msg = " + msg + ", CorrelationId = " + corrId);
         return corrId;
     }
 
