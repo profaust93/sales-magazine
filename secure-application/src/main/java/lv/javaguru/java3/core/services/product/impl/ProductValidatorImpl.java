@@ -31,7 +31,7 @@ public class ProductValidatorImpl implements ProductValidator{
         validateName(productDTO.getName());
         validateProductUrl(productDTO.getProductUrl());
         validatePrice(productDTO.getPrice());
-        validateId(productDTO.getProducerId(), "Producer");
+        validateId(productDTO.getProducerDTO().getId(), "Producer");
     }
 
     private void validateName(String name){

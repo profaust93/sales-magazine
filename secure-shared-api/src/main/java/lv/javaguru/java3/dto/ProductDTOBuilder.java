@@ -12,7 +12,6 @@ public class ProductDTOBuilder {
     private BigDecimal price;
     private String productUrl;
     private LocalDateTime lastUpdate;
-    private Long producerId;
     private ProducerDTO producerDTO;
 
     private ProductDTOBuilder() {
@@ -28,7 +27,7 @@ public class ProductDTOBuilder {
         productDTO.setProductUrl(productUrl);
         productDTO.setProductId(productId);
         productDTO.setLastUpdate(lastUpdate);
-        productDTO.setProducerId(producerId);
+        productDTO.setProducerDTO(producerDTO);
         return productDTO;
     }
 

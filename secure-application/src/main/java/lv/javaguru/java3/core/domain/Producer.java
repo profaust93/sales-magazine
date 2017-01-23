@@ -31,7 +31,7 @@ public class Producer {
     @Column(name="last_update", nullable = false)
     private LocalDateTime lastUpdate;
 
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "producer")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "producer")
     private Set<Product> products = new HashSet<>(0);
 
     public Long getId() {

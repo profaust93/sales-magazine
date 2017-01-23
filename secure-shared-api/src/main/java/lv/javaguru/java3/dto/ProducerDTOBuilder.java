@@ -9,7 +9,6 @@ public class ProducerDTOBuilder {
     private String producerUrl;
     private LocalDateTime timeOfRegistration;
     private LocalDateTime lastUpdate;
-    private Long version;
 
     private ProducerDTOBuilder producerBuilder(){
         return new ProducerDTOBuilder();
@@ -26,7 +25,6 @@ public class ProducerDTOBuilder {
         producer.setUrl(producerUrl);
         producer.setLastUpdate(lastUpdate);
         producer.setTimeOfRegistration(timeOfRegistration);
-        producer.setVersion(version);
         return producer;
     }
 
@@ -55,8 +53,4 @@ public class ProducerDTOBuilder {
         return this;
     }
 
-    public ProducerDTOBuilder withVersion(Long version) {
-        this.version = version;
-        return this;
-    }
 }

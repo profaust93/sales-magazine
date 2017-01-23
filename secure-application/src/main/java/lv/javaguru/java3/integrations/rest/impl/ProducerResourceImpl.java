@@ -67,7 +67,6 @@ public class ProducerResourceImpl implements ProducerResource {
                 producerDTO.getId(),
                 producerDTO.getName(),
                 producerDTO.getUrl(),
-                producerDTO.getVersion(),
                 producerDTO.getTimeOfRegistration(),
                 producerDTO.getLastUpdate());
         UpdateProducerResult result = commandExecutor.execute(command);

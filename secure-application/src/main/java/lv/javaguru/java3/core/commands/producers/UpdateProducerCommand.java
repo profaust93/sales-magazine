@@ -9,20 +9,17 @@ public class UpdateProducerCommand implements DomainCommand<UpdateProducerResult
 
     private String name;
     private String url;
-    private Long version;
     private LocalDateTime timeOfRegistration;
     private LocalDateTime lastUpdate;
 
     public UpdateProducerCommand(Long producerId,
                                  String name,
                                  String url,
-                                 Long version,
                                  LocalDateTime timeOfRegistration,
                                  LocalDateTime lastUpdate) {
         this.producerId = producerId;
         this.name = name;
         this.url = url;
-        this.version = version;
         this.timeOfRegistration = timeOfRegistration;
         this.lastUpdate = lastUpdate;
     }
@@ -38,15 +35,6 @@ public class UpdateProducerCommand implements DomainCommand<UpdateProducerResult
 
     public String getUrl() {
         return url;
-    }
-
-
-    public Long getVersion() {
-        return version;
-    }
-
-    public void setVersion(Long version) {
-        this.version = version;
     }
 
     public LocalDateTime getTimeOfRegistration() {

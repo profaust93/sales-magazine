@@ -14,7 +14,6 @@ public class ProducerConverter {
                 .withId(producer.getId())
                 .withName(producer.getName())
                 .withUrl(producer.getUrl())
-                .withVersion(producer.getVersion())
                 .withTimeOfRegistration(producer.getTimeOfRegistration())
                 .withLastUpdate(producer.getLastUpdate())
                 .build();

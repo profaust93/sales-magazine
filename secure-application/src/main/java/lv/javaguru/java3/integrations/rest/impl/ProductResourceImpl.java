@@ -40,7 +40,7 @@ public class ProductResourceImpl implements ProductResource {
                 productDTO.getName(),
                 productDTO.getPrice(),
                 productDTO.getProductUrl(),
-                productDTO.getProducerId());
+                productDTO.getProducerDTO().getId());
         CreateProductResult result = commandExecutor.execute(command);
         return result.getProduct();
     }

@@ -1,11 +1,6 @@
 package lv.javaguru.java3.dto;
 
 
-import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import lv.javaguru.java3.dto.utils.LocalDateTimeSerializer;
-import lv.javaguru.java3.dto.utils.LocalDateTimeDeserializer;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
@@ -15,15 +10,8 @@ public class ProducerDTO implements Serializable{
     private String name;
     private String url;
 
-
-    @JsonFormat(pattern = "dd.MM.yyyy HH:mm:ss")
-    @JsonSerialize(using = LocalDateTimeSerializer.class)
-    @JsonDeserialize(using= LocalDateTimeDeserializer.class)
     private LocalDateTime timeOfRegistration;
 
-    @JsonFormat(pattern = "dd.MM.yyyy HH:mm:ss")
-    @JsonSerialize(using = LocalDateTimeSerializer.class)
-    @JsonDeserialize(using= LocalDateTimeDeserializer.class)
     private LocalDateTime lastUpdate;
 
     public Long getId() {
@@ -65,6 +53,7 @@ public class ProducerDTO implements Serializable{
     public void setLastUpdate(LocalDateTime lastUpdate) {
         this.lastUpdate = lastUpdate;
     }
+
 
     @Override
     public String toString() {
