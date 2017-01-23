@@ -31,7 +31,7 @@ public class Product {
     @Column(name="version", nullable = false)
     private Long version;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "producer_id", nullable = false)
     private Producer producer;
 

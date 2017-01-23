@@ -1,6 +1,7 @@
 package lv.javaguru.java3.jms.services.products;
 
 import lv.javaguru.java3.jms.services.MessageReceiver;
+import org.apache.log4j.Logger;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.Resource;
@@ -8,6 +9,7 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.TimeUnit;
 @Component("getProductReceiver")
 public class GetProductReceiver implements MessageReceiver {
+    private final Logger logger = Logger.getLogger(this.getClass());
 
     @Resource(name = "receivedMessages")
     ConcurrentHashMap<String, Object> receivedMessages;

@@ -17,7 +17,7 @@ import java.util.UUID;
 
 @Component("getProductSender")
 public class GetProductSender implements MessageSender{
-    Logger logger = Logger.getLogger(GetProductSender.class);
+    private final Logger logger = Logger.getLogger(this.getClass());
 
     @Autowired
     RabbitTemplate template;
@@ -29,9 +29,8 @@ public class GetProductSender implements MessageSender{
         header.put("correlationId", corrId);
         header.put("exchange", exchange);
         Message<ProductDTO> message = new GenericMessage(msg, header);
-
         template.convertAndSend("toSecureApp", exchange.name(), message);
-
+        logger.info("Sending Message: msg = " + msg + ", CorrelationId = " + corrId);
         return corrId;
     }
 

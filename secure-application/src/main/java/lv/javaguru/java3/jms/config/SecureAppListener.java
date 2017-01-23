@@ -21,7 +21,7 @@ import java.util.concurrent.ExecutorService;
 @EnableRabbit //нужно для активации обработки аннотаций @RabbitListener
 @Component
 public class SecureAppListener {
-    Logger logger = Logger.getLogger(SecureAppListener.class);
+    private final Logger logger = Logger.getLogger(this.getClass());
 
     @Autowired
     RabbitTemplate template;
@@ -50,7 +50,6 @@ public class SecureAppListener {
                     logger.info("producer service");
                     break;
             }
-            logger.info(response);
             Map<String, Object> header = new HashMap<>();
             header.put("correlationId", correlationId);
             Message responseMessage = new GenericMessage(response, header);
