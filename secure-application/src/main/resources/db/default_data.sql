@@ -32,3 +32,21 @@ INSERT INTO PRODUCT( PRODUCT_ID, NAME, PRICE, LAST_UPDATE, PRODUCT_URL, VERSION,
         VALUES (NEXT VALUE FOR PRODUCT_SEQ, 'Galaxy Tab S2', 336, SYSDATE, 'http://www.samsung.com/lv/tablets', 0, 1);
 INSERT INTO PRODUCT( PRODUCT_ID, NAME, PRICE, LAST_UPDATE, PRODUCT_URL, VERSION, PRODUCER_ID)
         VALUES (NEXT VALUE FOR PRODUCT_SEQ, 'Gear S3 Frontier', 399, SYSDATE, 'http://www.samsung.com/lv/wearables/gear', 0, 1);
+
+INSERT INTO PRODUCT( PRODUCT_ID, NAME, PRICE, LAST_UPDATE, PRODUCT_URL, VERSION, PRODUCER_ID)
+        VALUES (NEXT VALUE FOR PRODUCT_SEQ, 'ProBook 450 G4', 1195.99, SYSDATE, 'https://www.dateks.lv/cenas/portativie-datori/139830_hewlett_packard_probook_450_g4_15_6_fhd_core_i5_7200u_8gb_256gb_ssd_geforce_930mx_2gb_windows_10_pro', 0, 2);
+INSERT INTO PRODUCT( PRODUCT_ID, NAME, PRICE, LAST_UPDATE, PRODUCT_URL, VERSION, PRODUCER_ID)
+        VALUES (NEXT VALUE FOR PRODUCT_SEQ, 'LaserJet P2035', 191.97, SYSDATE, 'https://www.dateks.lv/cenas/tintes-un-lazera-printeri/31967_hewlett_packard_laserjet_p2035', 0, 2);
+INSERT INTO PRODUCT( PRODUCT_ID, NAME, PRICE, LAST_UPDATE, PRODUCT_URL, VERSION, PRODUCER_ID)
+        VALUES (NEXT VALUE FOR PRODUCT_SEQ, 'LaserJet Pro M227fdw', 319.22, SYSDATE, 'https://www.dateks.lv/cenas/tintes-un-lazera-printeri/139985_hewlett_packard_laserjet_pro_m227fdw', 0, 2);
+INSERT INTO PRODUCT( PRODUCT_ID, NAME, PRICE, LAST_UPDATE, PRODUCT_URL, VERSION, PRODUCER_ID)
+        VALUES (NEXT VALUE FOR PRODUCT_SEQ, 'Pavilion x360', 648.82, SYSDATE, 'https://www.dateks.lv/cenas/portativie-datori/141145_hewlett_packard_pavilion_x360_15_bk006na_silver_15_6_hd_touch_core_i3_6100u_8gb_1tb_windows_10_home', 0, 2);
+
+INSERT INTO PRODUCT( PRODUCT_ID, NAME, PRICE, LAST_UPDATE, PRODUCT_URL, VERSION, PRODUCER_ID)
+        VALUES (NEXT VALUE FOR PRODUCT_SEQ, 'Vostro 15 (3568) Black', 347.61, SYSDATE, 'https://www.dateks.lv/cenas/portativie-datori/143901_dell_vostro-15-3568-black-15-6-hd-celeron-3855u-1-6ghz-4gb-500gb-windows-10-home', 0, 3);
+INSERT INTO PRODUCT( PRODUCT_ID, NAME, PRICE, LAST_UPDATE, PRODUCT_URL, VERSION, PRODUCER_ID)
+        VALUES (NEXT VALUE FOR PRODUCT_SEQ, 'XPS 12 (9250)', 932.47, SYSDATE, 'https://www.dateks.lv/cenas/portativie-datori/131670_dell_xps_12_9250_12_5_uhd_ips_touch_core_m5_6y57_8gb_256gb_ssd_windows_10_home', 0, 3);
+INSERT INTO PRODUCT( PRODUCT_ID, NAME, PRICE, LAST_UPDATE, PRODUCT_URL, VERSION, PRODUCER_ID)
+        VALUES (NEXT VALUE FOR PRODUCT_SEQ, 'E2316H 23"', 150.53, SYSDATE, 'https://www.dateks.lv/cenas/lcd-monitori/116634_dell_e2316h_23_', 0, 3);
+INSERT INTO PRODUCT( PRODUCT_ID, NAME, PRICE, LAST_UPDATE, PRODUCT_URL, VERSION, PRODUCER_ID)
+        VALUES (NEXT VALUE FOR PRODUCT_SEQ, 'S2716DG 27"', 632.05, SYSDATE, 'https://www.dateks.lv/cenas/lcd-monitori/126025_dell_s2716dg_27_', 0, 3);

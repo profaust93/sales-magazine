@@ -50,7 +50,7 @@ public class ProductController {
         List<ProductDTO> list = new ArrayList<>();
 
         // List emulator BEGIN
-        for (int i = 0; i < 12; i++) {
+        for (int i = 0; i < 20; i++) {
             String id = sender.sendMsg(Integer.toString(i), SalesClassifier.PRODUCT);
             ProductDTO answer = (ProductDTO) receiver.receiveMessage(id);
             list.add(answer);

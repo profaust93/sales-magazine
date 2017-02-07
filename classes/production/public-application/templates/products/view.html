@@ -27,17 +27,18 @@
             <span id="id" th:text="${product.productId}"></span>
         </div>
 
-        <div class="form-group">
-            <label for="name">Product name:</label>
-            <span id="name" th:text="${product.name}"></span>
-        </div>
-
         <th:block th:if="${ (product.producerDTO!=null) }">
             <div class="form-group">
                 <label for="producer">Producer:</label>
                 <a id="producer" th:text="${product.producerDTO.name}" th:href="@{/producers/{id}(id=${product.producerDTO.id})}"/>
             </div>
         </th:block>
+
+        <div class="form-group">
+            <label for="name">Product name:</label>
+            <span id="name" th:text="${product.name}"></span>
+        </div>
+
 
 
         <div class="form-group">

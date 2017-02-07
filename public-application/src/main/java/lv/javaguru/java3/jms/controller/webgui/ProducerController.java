@@ -53,7 +53,7 @@ public class ProducerController {
         List<ProducerDTO> list = new ArrayList<>();
 
         // List emulator BEGIN
-        for (int i = 0; i < 1; i++) {
+        for (int i = 0; i < 4; i++) {
             String id = sender.sendMsg(Integer.toString(i), SalesClassifier.PRODUCER);
             ProducerDTO answer = (ProducerDTO) receiver.receiveMessage(id);
             list.add(answer);
