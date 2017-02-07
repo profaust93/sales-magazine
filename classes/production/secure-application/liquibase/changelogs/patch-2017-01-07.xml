@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+
+    <changeSet id="1" author="ruslan" context="main">
+        <comment>Adding new column into product table</comment>
+        <addColumn tableName="product">
+            <column name="producer_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+        </addColumn>
+    </changeSet>
+
+    <changeSet id="2" author="ruslan" context="main">
+        <comment>Adding foreign key to product table</comment>
+        <addForeignKeyConstraint
+                baseTableName="product"
+                baseColumnNames="producer_id"
+                constraintName="fk_product_producer"
+                referencedTableName="producers"
+                referencedColumnNames="producer_id"/>
+    </changeSet>
+
+</databaseChangeLog>

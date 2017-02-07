@@ -1,7 +1,10 @@
 package lv.javaguru.java3.jms.config;
 
+import lv.javaguru.java3.core.commands.producers.ProducerConverter;
 import lv.javaguru.java3.core.commands.product.ProductConverter;
+import lv.javaguru.java3.core.domain.Producer;
 import lv.javaguru.java3.core.domain.Product;
+import lv.javaguru.java3.core.services.producers.ProducerService;
 import lv.javaguru.java3.core.services.product.ProductService;
 import lv.javaguru.java3.dto.SalesClassifier;
 import org.apache.log4j.Logger;
@@ -30,10 +33,16 @@ public class SecureAppListener {
     ExecutorService executor;
 
     @Autowired
-    ProductConverter converter;
+    ProductConverter productConverter;
 
     @Autowired
-    ProductService service;
+    ProductService productService;
+
+    @Autowired
+    ProducerConverter producerConverter;
+
+    @Autowired
+    ProducerService producerService;
 
     @RabbitListener(queues = "toSecureAppQueue")
     public void onMessage(Message<String> message) {
@@ -43,11 +52,12 @@ public class SecureAppListener {
             Object response = null;
             switch (exchange) {
                 case PRODUCT:
-                    Product product = service.get(Long.valueOf(message.getPayload()));
-                    response = converter.convert(product);
+                    Product product = productService.get(Long.valueOf(message.getPayload()));
+                    response = productConverter.convert(product);
                     break;
                 case PRODUCER:
-                    logger.info("producer service");
+                    Producer producer = producerService.get(Long.valueOf(message.getPayload()));
+                    response = producerConverter.convert(producer);
                     break;
             }
             Map<String, Object> header = new HashMap<>();

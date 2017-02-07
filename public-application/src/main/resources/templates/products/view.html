@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <title th:text="${product.name != null} ? 'Product: ' + ${product.producerDTO.name} + ' ' + ${product.name} : 'New product'"></title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <!--<link rel="icon" type="image/png" th:href="@{/resources/static/img/favico.png}" />-->
+    <link rel="stylesheet" media="screen" th:href="@{/static/css/bootstrap.min.css}"/>
+    <link rel="stylesheet" media="screen" th:href="@{/static/css/main.css}" />
+    <script th:src="@{/static/js/bootstrap.min.js}"></script>
+</head>
+<body>
+<div th:replace="fragments/header :: header"></div>
+<div class="container">
+
+    <div class="page-header">
+        <h1 th:text="'Product: '+ ${product.producerDTO.name} + ' ' + ${product.name}"> </h1>
+        <th:block th:if="${msg != null}">
+            <div th:replace="fragments/alert :: alert (type=${msgType}, message=${msg})">Alert</div>
+        </th:block>
+    </div>
+
+    <div class="width-300px">
+        <div class="form-group">
+            <label for="id">id:</label>
+            <span id="id" th:text="${product.productId}"></span>
+        </div>
+
+        <div class="form-group">
+            <label for="name">Product name:</label>
+            <span id="name" th:text="${product.name}"></span>
+        </div>
+
+        <th:block th:if="${ (product.producerDTO!=null) }">
+            <div class="form-group">
+                <label for="producer">Producer:</label>
+                <a id="producer" th:text="${product.producerDTO.name}" th:href="@{/producers/{id}(id=${product.producerDTO.id})}"/>
+            </div>
+        </th:block>
+
+
+        <div class="form-group">
+            <label for="price">Price:</label>
+            <span id="price" th:text="${product.price}"></span>
+        </div>
+        <div class="form-group">
+            <label for="url">URL:</label>
+            <a id="url" th:text="${product.productUrl}" th:href="${product.productUrl}"></a>
+        </div>
+        <div class="form-group">
+            <label for="lut">Last update time:</label>
+            <span id="lut" th:text="${product.lastUpdate != null} ? ${#temporals.format(product.lastUpdate, 'dd.MM.yyyy HH:mm')} : 'N/a'"/>
+        </div>
+
+
+        <div class="form-group">
+             <a role="button" class="btn btn-default" href="javascript:history.back()"><span class="glyphicon glyphicon-arrow-left"></span> Back</a>
+        </div>
+</div>
+    <div th:replace="fragments/footer :: footer"></div>
+</div>
+
+</body>
+</html>

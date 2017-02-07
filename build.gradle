@@ -95,6 +95,12 @@ allprojects {
                         'javax.ws.rs:javax.ws.rs-api:2.0.1',
                         'org.springframework.boot:spring-boot-starter-web:1.4.3.RELEASE'
                 ],
+                
+                thymeleafLib    :[
+                        'org.springframework.boot:spring-boot-starter-thymeleaf:1.4.3.RELEASE',
+                        'org.springframework.boot:spring-boot-devtools:1.4.3.RELEASE',
+                        'org.thymeleaf.extras:thymeleaf-extras-java8time:2.1.0.RELEASE'
+                ]
         ]
     }
 }
