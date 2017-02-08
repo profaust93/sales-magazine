@@ -55,9 +55,17 @@ public class SecureAppListener {
             Object response = null;
             switch (exchange) {
                 case PRODUCT:
-                    Product product = productService.get(Long.valueOf(message.getPayload()));
-                    response = productConverter.convert(product);
-                    break;
+                    switch (type){
+                        case GET:
+                            Product product = productService.get(Long.valueOf(message.getPayload()));
+                            response = productConverter.convert(product);
+                            break;
+                        case GET_ALL:
+                            List<Product> products = productService.getAll();
+                            response = productConverter.convert(products);
+                            break;
+                }
+                break;
                 case PRODUCER:
                     switch (type){
                         case GET:

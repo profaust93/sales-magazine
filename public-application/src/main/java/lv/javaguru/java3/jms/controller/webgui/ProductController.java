@@ -46,18 +46,11 @@ public class ProductController {
 
     @RequestMapping(value = {"/", Views.PRODUCTS_LIST, Views.PRODUCTS}, method = RequestMethod.GET)
     public String viewDevices(Model model) {
-        List<ProductDTO> list = new ArrayList<>();
+        String id = sender.sendMsg("", SalesClassifier.PRODUCT, ServiceType.GET_ALL);
+        List<ProductDTO> productDTOList = (List<ProductDTO>) receiver.receiveMessage(id);
 
-        // List emulator BEGIN
-        for (int i = 0; i < 20; i++) {
-            String id = sender.sendMsg(Integer.toString(i), SalesClassifier.PRODUCT, ServiceType.GET_ALL);
-            ProductDTO answer = (ProductDTO) receiver.receiveMessage(id);
-            list.add(answer);
-        }
-        // List emulator END
-
-        model.addAttribute("products", list);
-        model.addAttribute("recordCount", list.size());
+        model.addAttribute("products", productDTOList);
+        model.addAttribute("recordCount", productDTOList.size());
         return Views.PRODUCTS_LIST;
     }
 

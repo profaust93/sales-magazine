@@ -22,12 +22,9 @@ public class ProducerConverter {
                 .build();
     }
 
-
     public List<ProducerDTO> convert(List<Producer> producers){
         return producers.stream()
                 .map(p -> convert(p))
                 .collect(Collectors.toList());
     }
-
-
 }

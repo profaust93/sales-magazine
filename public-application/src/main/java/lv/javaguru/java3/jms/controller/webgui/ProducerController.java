@@ -50,10 +50,10 @@ public class ProducerController {
     @RequestMapping(value = {Views.PRODUCERS_LIST, Views.PRODUCERS}, method = RequestMethod.GET)
     public String viewDevices(Model model) {
         String id = sender.sendMsg("", SalesClassifier.PRODUCER, ServiceType.GET_ALL);
-        List<ProducerDTO> producerDTOs = (List<ProducerDTO>) receiver.receiveMessage(id);
+        List<ProducerDTO> producerDTOList = (List<ProducerDTO>) receiver.receiveMessage(id);
 
-        model.addAttribute("producers", producerDTOs);
-        model.addAttribute("recordCount", producerDTOs.size());
+        model.addAttribute("producers", producerDTOList);
+        model.addAttribute("recordCount", producerDTOList.size());
         return Views.PRODUCERS_LIST;
     }
 
