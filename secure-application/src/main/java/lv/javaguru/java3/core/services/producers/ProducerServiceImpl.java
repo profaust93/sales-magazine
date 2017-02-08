@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Component
 class ProducerServiceImpl implements ProducerService {
@@ -33,6 +34,11 @@ class ProducerServiceImpl implements ProducerService {
     public void remove(Long producerId) {
         Producer product = producerRepository.findOne(producerId);
         producerRepository.delete(product);
+    }
+
+    @Override
+    public List<Producer> getAll() {
+        return (List<Producer>) producerRepository.findAll();
     }
 
 }

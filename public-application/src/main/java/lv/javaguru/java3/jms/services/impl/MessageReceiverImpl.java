@@ -1,4 +1,4 @@
-package lv.javaguru.java3.jms.services.producers;
+package lv.javaguru.java3.jms.services.impl;
 
 import lv.javaguru.java3.jms.services.MessageReceiver;
 import org.apache.log4j.Logger;
@@ -7,9 +7,8 @@ import org.springframework.stereotype.Component;
 import javax.annotation.Resource;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.TimeUnit;
-
-@Component("getProducerReceiver")
-public class GetProducerReceiver implements MessageReceiver {
+@Component("getProductReceiver")
+public class MessageReceiverImpl implements MessageReceiver {
     private final Logger logger = Logger.getLogger(this.getClass());
 
     @Resource(name = "receivedMessages")

@@ -3,6 +3,7 @@ package lv.javaguru.java3.jms.controller;
 import lv.javaguru.java3.dto.ProducerDTO;
 import lv.javaguru.java3.dto.ProductDTO;
 import lv.javaguru.java3.dto.SalesClassifier;
+import lv.javaguru.java3.dto.ServiceType;
 import lv.javaguru.java3.jms.services.MessageReceiver;
 import lv.javaguru.java3.jms.services.MessageSender;
 import org.apache.log4j.Logger;
@@ -37,11 +38,9 @@ public class GetProducerController {
     RabbitTemplate template;
 
     @Autowired
-    @Qualifier("getProducerReceiver")
     MessageReceiver receiver;
 
     @Autowired
-    @Qualifier("getProducerSender")
     MessageSender sender;
 
     @Resource(name = "receivedMessages")
@@ -54,7 +53,7 @@ public class GetProducerController {
     @ResponseBody
     public DeferredResult<ResponseEntity<ProducerDTO>> queue1(@RequestParam("id") String productId) throws InterruptedException, ExecutionException, TimeoutException {
         DeferredResult response = new DeferredResult();
-        String id = sender.sendMsg(productId, SalesClassifier.PRODUCER);
+        String id = sender.sendMsg(productId, SalesClassifier.PRODUCER, ServiceType.GET);
         ProducerDTO answer = (ProducerDTO) receiver.receiveMessage(id);
         logger.info("Received Message: " + answer);
         response.setResult(new ResponseEntity<>(answer, HttpStatus.OK));

@@ -4,6 +4,9 @@ import lv.javaguru.java3.core.domain.Producer;
 import lv.javaguru.java3.dto.ProducerDTO;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 import static lv.javaguru.java3.dto.ProducerDTOBuilder.createProducerDTO;
 
 @Component
@@ -17,6 +20,13 @@ public class ProducerConverter {
                 .withTimeOfRegistration(producer.getTimeOfRegistration())
                 .withLastUpdate(producer.getLastUpdate())
                 .build();
+    }
+
+
+    public List<ProducerDTO> convert(List<Producer> producers){
+        return producers.stream()
+                .map(p -> convert(p))
+                .collect(Collectors.toList());
     }
 
 

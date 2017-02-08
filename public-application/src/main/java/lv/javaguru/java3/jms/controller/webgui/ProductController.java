@@ -2,6 +2,7 @@ package lv.javaguru.java3.jms.controller.webgui;
 
 import lv.javaguru.java3.dto.ProductDTO;
 import lv.javaguru.java3.dto.SalesClassifier;
+import lv.javaguru.java3.dto.ServiceType;
 import lv.javaguru.java3.jms.constants.Views;
 import lv.javaguru.java3.jms.services.MessageReceiver;
 import lv.javaguru.java3.jms.services.MessageSender;
@@ -35,11 +36,9 @@ public class ProductController {
     RabbitTemplate template;
 
     @Autowired
-    @Qualifier("getProductReceiver")
     MessageReceiver receiver;
 
     @Autowired
-    @Qualifier("getProductSender")
     MessageSender sender;
 
     @Resource(name = "receivedMessages")
@@ -51,7 +50,7 @@ public class ProductController {
 
         // List emulator BEGIN
         for (int i = 0; i < 20; i++) {
-            String id = sender.sendMsg(Integer.toString(i), SalesClassifier.PRODUCT);
+            String id = sender.sendMsg(Integer.toString(i), SalesClassifier.PRODUCT, ServiceType.GET_ALL);
             ProductDTO answer = (ProductDTO) receiver.receiveMessage(id);
             list.add(answer);
         }
@@ -66,7 +65,7 @@ public class ProductController {
     public String showProduct(@PathVariable("id") String productId,
                              Model model) {
 
-        String id = sender.sendMsg(productId, SalesClassifier.PRODUCT);
+        String id = sender.sendMsg(productId, SalesClassifier.PRODUCT, ServiceType.GET);
         ProductDTO answer = (ProductDTO) receiver.receiveMessage(id);
         model.addAttribute("product", answer);
         return Views.PRODUCTS_VIEW;

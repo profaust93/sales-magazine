@@ -7,6 +7,7 @@ import lv.javaguru.java3.core.domain.Product;
 import lv.javaguru.java3.core.services.producers.ProducerService;
 import lv.javaguru.java3.core.services.product.ProductService;
 import lv.javaguru.java3.dto.SalesClassifier;
+import lv.javaguru.java3.dto.ServiceType;
 import org.apache.log4j.Logger;
 import org.springframework.amqp.rabbit.annotation.EnableRabbit;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
@@ -18,6 +19,7 @@ import org.springframework.stereotype.Component;
 
 import javax.annotation.Resource;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ExecutorService;
 
@@ -49,6 +51,7 @@ public class SecureAppListener {
         executor.submit(() -> {
             String correlationId = (String) message.getHeaders().get("correlationId");
             SalesClassifier exchange = (SalesClassifier) message.getHeaders().get("exchange");
+            ServiceType type = (ServiceType) message.getHeaders().get("serviceType");
             Object response = null;
             switch (exchange) {
                 case PRODUCT:
@@ -56,8 +59,16 @@ public class SecureAppListener {
                     response = productConverter.convert(product);
                     break;
                 case PRODUCER:
-                    Producer producer = producerService.get(Long.valueOf(message.getPayload()));
-                    response = producerConverter.convert(producer);
+                    switch (type){
+                        case GET:
+                            Producer producer = producerService.get(Long.valueOf(message.getPayload()));
+                            response = producerConverter.convert(producer);
+                            break;
+                        case GET_ALL:
+                            List<Producer> producers = producerService.getAll();
+                            response = producerConverter.convert(producers);
+                            break;
+                    }
                     break;
             }
             Map<String, Object> header = new HashMap<>();

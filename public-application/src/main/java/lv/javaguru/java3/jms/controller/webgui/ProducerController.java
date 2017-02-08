@@ -2,6 +2,7 @@ package lv.javaguru.java3.jms.controller.webgui;
 
 import lv.javaguru.java3.dto.ProducerDTO;
 import lv.javaguru.java3.dto.SalesClassifier;
+import lv.javaguru.java3.dto.ServiceType;
 import lv.javaguru.java3.jms.constants.Views;
 import lv.javaguru.java3.jms.services.MessageReceiver;
 import lv.javaguru.java3.jms.services.MessageSender;
@@ -38,11 +39,9 @@ public class ProducerController {
     RabbitTemplate template;
 
     @Autowired
-    @Qualifier("getProducerReceiver")
     MessageReceiver receiver;
 
     @Autowired
-    @Qualifier("getProducerSender")
     MessageSender sender;
 
     @Resource(name = "receivedMessages")
@@ -50,18 +49,11 @@ public class ProducerController {
 
     @RequestMapping(value = {Views.PRODUCERS_LIST, Views.PRODUCERS}, method = RequestMethod.GET)
     public String viewDevices(Model model) {
-        List<ProducerDTO> list = new ArrayList<>();
+        String id = sender.sendMsg("", SalesClassifier.PRODUCER, ServiceType.GET_ALL);
+        List<ProducerDTO> producerDTOs = (List<ProducerDTO>) receiver.receiveMessage(id);
 
-        // List emulator BEGIN
-        for (int i = 0; i < 4; i++) {
-            String id = sender.sendMsg(Integer.toString(i), SalesClassifier.PRODUCER);
-            ProducerDTO answer = (ProducerDTO) receiver.receiveMessage(id);
-            list.add(answer);
-        }
-        // List emulator END
-
-        model.addAttribute("producers", list);
-        model.addAttribute("recordCount", list.size());
+        model.addAttribute("producers", producerDTOs);
+        model.addAttribute("recordCount", producerDTOs.size());
         return Views.PRODUCERS_LIST;
     }
 
@@ -69,7 +61,7 @@ public class ProducerController {
     public String showProducer(@PathVariable("id") String producerId,
                              Model model) {
 
-        String id = sender.sendMsg(producerId, SalesClassifier.PRODUCER);
+        String id = sender.sendMsg(producerId, SalesClassifier.PRODUCER, ServiceType.GET);
         ProducerDTO answer = (ProducerDTO) receiver.receiveMessage(id);
         model.addAttribute("producer", answer);
         return Views.PRODUCERS_VIEW;
